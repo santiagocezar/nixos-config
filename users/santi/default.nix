@@ -36,8 +36,8 @@ in*/
     clang-tools
     jq
     godot_4
-
     qbittorrent
+
     noto-fonts
     noto-fonts-cjk
     noto-fonts-emoji
@@ -59,13 +59,18 @@ in*/
     };
   };
 
-  programs.fish.enable = true;
-  programs.fish.shellInit = ''
-  set -gx PNPM_HOME
-    if not string match -q -- $PNPM_HOME $PATH
-      set -gx PATH "$PNPM_HOME" $PATH
-    end
-  '';
+  programs.fish = {
+    enable = true;
+    shellInit = ''
+      set -gx PNPM_HOME
+      if not string match -q -- $PNPM_HOME $PATH
+        set -gx PATH "$PNPM_HOME" $PATH
+      end
+    '';
+    shellAliases = {
+      yup = "sudo nixos-rebuild switch --flake=~/NixOS/";
+    };
+  };
   programs.starship.enable = true;
   programs.zoxide.enable = true;
 
@@ -87,7 +92,7 @@ in*/
   #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
   #  /etc/profiles/per-user/santi/etc/profile.d/hm-session-vars.sh
   home.sessionVariables = {
-    EDITOR = "kate";
+    EDITOR = "kwrite";
     PNPM_HOME = "/home/santi/.local/share/pnpm";
   };
 
