@@ -68,7 +68,7 @@ in*/
       end
     '';
     shellAliases = {
-      yup = "sudo nixos-rebuild switch --flake=~/NixOS/";
+      yup = "sudo nixos-rebuild switch --flake ~/NixOS/";
     };
   };
   programs.starship.enable = true;
