@@ -131,6 +131,7 @@
     nixpkgs-fmt
     rnix-lsp
     vlc
+    xdg-desktop-portal-gtk # make gtk flatpaks look at least acceptable
   ];
 
   # Enable GTK theming for Wayland apps on KDE
