@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports =
@@ -228,4 +228,6 @@
 
   # Enable flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  # https://dataswamp.org/~solene/2022-07-20-nixos-flakes-command-sync-with-system.html
+  nix.registry.nixpkgs.flake = inputs.nixpkgs;
 }

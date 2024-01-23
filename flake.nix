@@ -44,6 +44,7 @@
       # deploy this configuration on any NixOS system:
       #   sudo nixos-rebuild switch --flake .#nixos-test
       "e102" = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; }; # https://dataswamp.org/~solene/2022-07-20-nixos-flakes-command-sync-with-system.html
         system = "x86_64-linux";
 
         # The Nix module system can modularize configuration,

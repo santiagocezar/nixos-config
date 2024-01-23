@@ -67,6 +67,12 @@ in*/
       if not string match -q -- $PNPM_HOME $PATH
         set -gx PATH "$PNPM_HOME" $PATH
       end
+      function yup -d "Commit and update the system"
+        cd ~/NixOS/
+        git add .
+        git commit -m $argv[1]
+        sudo nixos-rebuild switch --flake .
+      end
     '';
     shellAliases = {
       yup = "sudo nixos-rebuild switch --flake ~/NixOS/";
