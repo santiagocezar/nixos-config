@@ -130,9 +130,16 @@
     libsForQt5.ktexteditor.bin # This adds PolKit support to kate (https://discourse.nixos.org/t/edit-configuration-nix-using-kate/37218/2)
     nixpkgs-fmt
     rnix-lsp
-    vlc
-    xdg-desktop-portal-gtk # make gtk flatpaks look at least acceptable
+    vlc # make gtk flatpaks look at least acceptable
   ];
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-kde
+    ];
+  };
 
   # Enable GTK theming for Wayland apps on KDE
   programs.dconf.enable = true;
