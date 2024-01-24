@@ -39,6 +39,7 @@ in*/
     qbittorrent
     libreoffice
     vnote
+    gnupg
 
     noto-fonts
     noto-fonts-cjk
