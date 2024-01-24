@@ -38,6 +38,7 @@ in*/
     godot_4
     qbittorrent
     libreoffice
+    vnote
 
     noto-fonts
     noto-fonts-cjk
