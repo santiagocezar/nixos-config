@@ -64,6 +64,11 @@
 
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+  hardware.bluetooth.input = {
+    General = {
+      ClassicBondedOnly = false;
+    };
+  }; # re-enables support for the dualshock 3
 
   # Enable sound with pipewire.
   sound.enable = true;
