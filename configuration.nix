@@ -71,13 +71,10 @@
   }; # re-enables support for the dualshock 3
 
   services.pcscd.enable = true;
-  programs.gnupg = {
+  programs.gnupg.agent  = {
     enable = true;
-    agent = {
-      enable = true;
-      pinentryFlavor = "qt";
-      enableSSHSupport = true;
-    };
+    pinentryFlavor = "qt";
+    enableSSHSupport = true;
   };
 
   # Enable sound with pipewire.
@@ -146,6 +143,7 @@
     nixpkgs-fmt
     rnix-lsp
     vlc # make gtk flatpaks look at least acceptable
+    gnupg
   ];
 
   # Flatpak stuff
