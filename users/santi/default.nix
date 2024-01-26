@@ -1,18 +1,4 @@
 { config, pkgs, ... }:
-/*
-let
-  steamFonts = fonts: derivation {
-    system = pkgs.system;
-    name = "steam-fonts";
-
-    builder = "/bin/sh";
-    args = [ (builtins.toFile "steamfonts" ''
-      mkdir -p "$out/share/fonts"
-
-    '') ];
-  }
-in*/
-
 {
   home.username = "santi";
   home.homeDirectory = "/home/santi";
@@ -21,31 +7,58 @@ in*/
   home.stateVersion = "23.11";
 
   home.packages = with pkgs; [
+    # Apps
     firefox
+    kate
+    libreoffice
+    libsForQt5.ktexteditor.bin # This adds PolKit support to kate (https://discourse.nixos.org/t/edit-configuration-nix-using-kate/37218/2)
+    qbittorrent
     steam
     steam-run
-    neofetch
-    nodejs
-    nodePackages.pnpm
-    python3
-    srb2
-    srb2kart
-    gzdoom
-    htop
+    vlc
+    vnote
+
+    # Development
     clang
     clang-tools
-    jq
+    flatpak-builder
+    git
     godot_4
-    qbittorrent
-    libreoffice
-    vnote
+    nixpkgs-fmt
+    nodePackages.pnpm
+    nodejs
+    poetry
+    python3
+    rnix-lsp
     vscode
 
+    # Games
+    gzdoom
+    srb2
+    srb2kart
+    love_0_10
+
+    # Utilities
+    evtest
+    file
+    htop
+    jq
+    micro
+    ncdu
+    neofetch
+    nix-index
+    p7zip
+    unrar
+    xorg.xeyes
+
+    # Fonts
     noto-fonts
     noto-fonts-cjk
     noto-fonts-emoji
     dejavu_fonts
   ];
+
+  services.syncthing.enable = true;
 
   fonts.fontconfig.enable = true;
 
@@ -60,6 +73,24 @@ in*/
         dejavu_fonts
       ];
     };
+  };
+
+  # Manually source 'hm-session-vars.sh' located at
+  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
+  #  /etc/profiles/per-user/santi/etc/profile.d/hm-session-vars.sh
+  home.sessionVariables = {
+    EDITOR = "kwrite";
+    PNPM_HOME = "/home/santi/.local/share/pnpm";
+  };
+  home.sessionPath = [
+    "$HOME/.local/bin"
+    "$PNPM_HOME"
+  ];
+
+  home.file = {
+    "${config.xdg.configHome}/plasma-workspace/env/hm.sh".text = ''
+      source ${config.home.profileDirectory}/etc/profile.d/hm-session-vars.sh
+    '';
   };
 
   programs.fish = {
@@ -81,28 +112,6 @@ in*/
   };
   programs.starship.enable = true;
   programs.zoxide.enable = true;
-
-  services.syncthing.enable = true;
-
-  home.sessionPath = [
-    "$HOME/.local/bin"
-    "$PNPM_HOME"
-  ];
-
-  home.file = {
-    "${config.xdg.configHome}/plasma-workspace/env/hm.sh".text = ''
-      source ${config.home.profileDirectory}/etc/profile.d/hm-session-vars.sh
-    '';
-    # ".screenrc".source = dotfiles/screenrc;
-  };
-
-  # Manually source 'hm-session-vars.sh' located at
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #  /etc/profiles/per-user/santi/etc/profile.d/hm-session-vars.sh
-  home.sessionVariables = {
-    EDITOR = "kwrite";
-    PNPM_HOME = "/home/santi/.local/share/pnpm";
-  };
 
   programs.home-manager.enable = true;
 }

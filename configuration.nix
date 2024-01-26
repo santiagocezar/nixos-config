@@ -133,16 +133,6 @@
       runScript = "fish";
     }))
 
-    nix-index
-    file
-    micro
-    git
-    flatpak-builder
-    kate
-    libsForQt5.ktexteditor.bin # This adds PolKit support to kate (https://discourse.nixos.org/t/edit-configuration-nix-using-kate/37218/2)
-    nixpkgs-fmt
-    rnix-lsp
-    vlc # make gtk flatpaks look at least acceptable
     gnupg
   ];
 
@@ -212,6 +202,7 @@
      KEYBOARD_KEY_99=end
   '';
 
+  # Share PS2 games with OPL
   services.samba = {
     enable = true;
     securityType = "user";
@@ -242,15 +233,7 @@
       force directory mode = 0070
       keepalive = 0
       smb ports = 445
-   '';
-    /*extraConfig = ''
-      client min protocol = CORE
-      client max protocol = NT1
-      server max protocol = SMB3
-      server min protocol = CORE
-      strict sync = no
-      keepalive = 0
-    '';*/
+    '';
     shares = {
       ps2 = {
         "comment" = "ps2";
@@ -274,17 +257,6 @@
   networking.firewall.allowedTCPPorts = [
     8010 # VLC
   ];
-
-  /*
-  services.syncthing = {
-    enable = true;
-    dataDir = config.users.users.santi.home;
-    configDir = "${config.users.users.santi.home}/.config/syncthing";
-    user = "santi";
-    overrideFolders = false;
-    overrideDevices = false;
-  };
-  */
 
   # Enable flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
