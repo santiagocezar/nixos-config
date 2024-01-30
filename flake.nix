@@ -18,7 +18,7 @@
       url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    inputs.vscode-ext.url = "github:nix-community/nix-vscode-extensions";
+    vscode-ext.url = "github:nix-community/nix-vscode-extensions";
   };
 
   # `outputs` are all the build result of the flake.
