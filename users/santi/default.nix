@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 {
   home.username = "santi";
   home.homeDirectory = "/home/santi";
@@ -17,6 +17,7 @@
     steam-run
     vlc
     vnote
+    filezilla
 
     # Development
     clang
@@ -28,15 +29,21 @@
     nodePackages.pnpm
     nodejs
     poetry
+    ps2client
     python3
     rnix-lsp
-    vscode
+    (vscode-with-extensions.override {
+      vscodeExtensions = with inputs.vscode-ext; [
+        ms-python.python
+        ms-vscode-remote.remote-ssh
+      ];
+    })
 
     # Games
     gzdoom
     srb2
     srb2kart
-    love_0_10
+    trenchbroom
 
     # Utilities
     evtest

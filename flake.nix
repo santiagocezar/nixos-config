@@ -18,6 +18,7 @@
       url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    inputs.vscode-ext.url = "github:nix-community/nix-vscode-extensions";
   };
 
   # `outputs` are all the build result of the flake.
@@ -85,7 +86,6 @@
         # `specialArgs`.
         # you must use `specialArgs` by uncomment the following line:
         #
-        # specialArgs = {...};  # pass custom arguments into all sub module.
         modules = [
           # Import the configuration.nix here, so that the
           # old configuration file can still take effect.
