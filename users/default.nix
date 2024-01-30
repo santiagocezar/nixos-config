@@ -1,4 +1,4 @@
-{ config, lib, pkgs, modulesPath, ... }@extraSpecialArgs:
+{ config, lib, pkgs, modulesPath, inputs, ... }@extraSpecialArgs:
 
 {
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -12,7 +12,7 @@
   home-manager = {
     # Optionally, use home-manager.extraSpecialArgs to pass
     # arguments to home.nix
-    inherit extraSpecialArgs;
+    extraSpecialArgs = { inherit inputs; };
     useGlobalPkgs = true;
     useUserPackages = true;
     users.santi = import ./santi;
