@@ -5,7 +5,7 @@ let
 
   system = pkgs.system;
   vsc-extensions = inputs.nix-vscode-extensions.extensions.${system};
-  fonts = [
+  fonts = with pkgs; [
     noto-fonts
     noto-fonts-cjk
     noto-fonts-emoji
