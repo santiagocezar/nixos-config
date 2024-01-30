@@ -33,7 +33,7 @@
     python3
     rnix-lsp
     (vscode-with-extensions.override {
-      vscodeExtensions = with inputs.vscode-ext; [
+      vscodeExtensions = with inputs.vscode-ext.vscode-marketplace; [
         ms-python.python
         ms-vscode-remote.remote-ssh
       ];
