@@ -61,6 +61,7 @@ in
       # Utilities
       evtest
       file
+      gparted
       htop
       jq
       micro
