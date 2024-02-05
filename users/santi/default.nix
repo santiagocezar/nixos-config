@@ -71,6 +71,7 @@ in
       p7zip
       unrar
       xorg.xeyes
+      mediawriter
     ] ++ fonts;
 
     services.syncthing.enable = true;
@@ -107,11 +108,6 @@ in
     programs.fish = {
       enable = true;
       shellInit = ''
-        set -gx PNPM_HOME
-        if not string match -q -- $PNPM_HOME $PATH
-          set -gx PATH "$PNPM_HOME" $PATH
-        end
-
         function yup -d "Commit and update the system"
           cd ~/NixOS/
           git add .

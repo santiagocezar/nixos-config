@@ -214,25 +214,12 @@
       server min protocol = CORE
       client min protocol = CORE
       client max protocol = SMB3
-      server role = standalone server
-      passdb backend = tdbsam
-      obey pam restrictions = yes
-      unix password sync = yes
-      passwd program = /usr/bin/passwd %u
-      passwd chat = *New*UNIX*password* %n\n *ReType*new*UNIX*password* %n\n *passwd:*all*authentication*tokens*updated*successfully*
-      pam password change = yes
+
       map to guest = Bad User
       usershare allow guests = yes
       name resolve order = lmhosts bcast host wins
       security = user
       guest account = nobody
-      usershare path = /var/lib/samba/usershare
-      usershare max shares = 100
-      usershare owner only = yes
-      force create mode = 0070
-      force directory mode = 0070
-      keepalive = 0
-      smb ports = 445
     '';
     shares = {
       ps2 = {
