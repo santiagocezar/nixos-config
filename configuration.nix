@@ -173,6 +173,12 @@
     "/usr/local/share/fonts" = mkRoSymBind "${aggregatedFonts}/share/fonts";
   };
 
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+    defaultNetwork.settings.dns_enabled = true;
+  };
+
   fonts = {
     fontDir.enable = true;
     packages = with pkgs; [
