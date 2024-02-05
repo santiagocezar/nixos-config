@@ -72,6 +72,7 @@ in
       unrar
       xorg.xeyes
       mediawriter
+      ventoy
     ] ++ fonts;
 
     services.syncthing.enable = true;
