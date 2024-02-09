@@ -59,20 +59,21 @@ in
       trenchbroom
 
       # Utilities
+      cachix
       evtest
       file
       gparted
       htop
       jq
+      mediawriter
       micro
       ncdu
       neofetch
       nix-index
       p7zip
       unrar
-      xorg.xeyes
-      mediawriter
       ventoy
+      xorg.xeyes
     ] ++ fonts;
 
     services.syncthing.enable = true;
