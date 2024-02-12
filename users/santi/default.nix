@@ -21,6 +21,7 @@ in
 
     home.packages = with pkgs; [
       # Apps
+      filezilla
       firefox
       kate
       libreoffice
@@ -30,7 +31,7 @@ in
       steam-run
       vlc
       vnote
-      filezilla
+      wineWowPackages.waylandFull
 
       # Development
       clang
