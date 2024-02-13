@@ -23,7 +23,7 @@ in
       # Apps
       filezilla
       firefox
-      gnuplot
+      gnuplot_qt
       kate
       libreoffice
       libsForQt5.ktexteditor.bin # This adds PolKit support to kate [^1]
