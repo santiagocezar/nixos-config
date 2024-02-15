@@ -36,6 +36,7 @@ in
       qalculate-qt
       libqalculate
       xournalpp
+      mathematica
 
       # Development
       clang
