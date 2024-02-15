@@ -33,6 +33,8 @@ in
       vlc
       vnote
       wineWowPackages.waylandFull
+      qalculate-qt
+      libqalculate
 
       # Development
       clang
