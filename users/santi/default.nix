@@ -35,6 +35,7 @@ in
       wineWowPackages.waylandFull
       qalculate-qt
       libqalculate
+      xournalpp
 
       # Development
       clang
