@@ -39,7 +39,7 @@ in
       (mathematica.override {
         source = pkgs.requireFile {
           name = "Mathematica_13.3.1_LINUX.sh";
-          sha256 = "0w7v31pwj2ax9886b6c6r58gz642j7a1ashgv2nl0dzpq1dj7x6v";
+          sha256 = "sha256:0w7v31pwj2ax9886b6c6r58gz642j7a1ashgv2nl0dzpq1dj7x6v";
           message = ''
             Your override for Mathematica includes a different src for the installer,
             and it is missing.
