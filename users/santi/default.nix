@@ -1,4 +1,17 @@
-{ config, pkgs, inputs,  ... }:
+)(mathematica.override {
+        source = pkgs.requireFile {
+    name = "Mathematica_XXMathematica_13.3.1_LINUX";
+    # Get this hash via a command similar to this:
+    # nix-store --query --hash \
+    # $(nix store add-path Mathematica_XX.X.X_BNDL_LINUX.sh --name 'Mathematica_XX.X.X_BNDL_LINUX.sh')
+    sha256 = "0000000000000000000000000000000000000000000000000000";
+    message = ''
+      Your override for Mathematica includes a different src for the installer,
+      and it is missing.
+    '';
+    hashMode = "recursive";
+  };
+}{ config, pkgs, inputs,  ... }:
 let
   user = "santi";
   home = "/home/${user}";
@@ -36,7 +49,17 @@ in
       qalculate-qt
       libqalculate
       xournalpp
-      mathematica
+      (mathematica.override {
+        source = pkgs.requireFile {
+          name = "Mathematica_13.3.1_LINUX.sh";
+          sha256 = "0w7v31pwj2ax9886b6c6r58gz642j7a1ashgv2nl0dzpq1dj7x6v";
+          message = ''
+            Your override for Mathematica includes a different src for the installer,
+            and it is missing.
+          '';
+          hashMode = "recursive";
+        };
+      })
 
       # Development
       clang
