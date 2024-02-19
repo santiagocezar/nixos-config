@@ -23,7 +23,7 @@ in
       # Apps
       filezilla
       firefox
-      octave
+      octaveFull
       kate
       libreoffice
       libsForQt5.ktexteditor.bin # This adds PolKit support to kate [^1]
