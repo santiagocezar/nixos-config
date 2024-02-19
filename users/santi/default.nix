@@ -75,7 +75,7 @@ in
       trenchbroom
 
       # Utilities
-      busybox
+      usbutils
       cachix
       evtest
       file
