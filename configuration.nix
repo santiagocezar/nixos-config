@@ -135,6 +135,7 @@
     }))
 
     gnupg
+    epson-escpr
   ];
 
   # Flatpak stuff
