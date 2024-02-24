@@ -101,9 +101,9 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  virtualisation.virtualbox.host.enable = true;
-  virtualisation.virtualbox.host.enableExtensionPack = true;
-  users.extraGroups.vboxusers.members = [ "santi" ];
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
+  users.users.santi.extraGroups = [ "libvirtd" ];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
