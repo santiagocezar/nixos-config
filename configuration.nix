@@ -50,6 +50,7 @@
   # Enable the KDE Plasma Desktop Environment.
   services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
+  services.xserver.desktopManager.qtile.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
@@ -199,8 +200,8 @@
   # Enable GTK theming for Wayland apps on KDE
   programs.dconf.enable = true;
 
-
   security.polkit.enable = true;
+
   # Do it here instead of HM to automatically open ports I think
   programs.kdeconnect.enable = true;
   programs.fish.enable = true;
@@ -260,6 +261,7 @@
 
   # Enable flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   # https://dataswamp.org/~solene/2022-07-20-nixos-flakes-command-sync-with-system.html
   nix.registry.nixpkgs.flake = inputs.nixpkgs;
 }
