@@ -11,6 +11,16 @@ let
     noto-fonts-emoji
     dejavu_fonts
   ];
+
+  yup = pkgs.writeShellScriptBin "yup" ''
+    # Commit and update the system
+    set -uex
+    cd ~/NixOS/
+    git diff -u
+    sudo nixos-rebuild switch --flake path:.
+    git add .
+    git commit -m "$1"
+  '';
 in
   {
     home.username = user;
@@ -23,18 +33,18 @@ in
       # Apps
       filezilla
       firefox
-      octaveFull
       kate
+      libqalculate
       libreoffice
       libsForQt5.ktexteditor.bin # This adds PolKit support to kate [^1]
+      octaveFull
+      qalculate-qt
       qbittorrent
       steam
       steam-run
       vlc
       vnote
       wineWowPackages.waylandFull
-      qalculate-qt
-      libqalculate
       xournalpp
       (mathematica.override {
         source = pkgs.requireFile {
@@ -75,7 +85,6 @@ in
       trenchbroom
 
       # Utilities
-      usbutils
       cachix
       evtest
       file
@@ -89,8 +98,10 @@ in
       nix-index
       p7zip
       unrar
+      usbutils
       ventoy
       xorg.xeyes
+      yup
     ] ++ fonts;
 
     services.syncthing.enable = true;
@@ -127,13 +138,6 @@ in
     programs.fish = {
       enable = true;
       shellInit = ''
-        function yup -d "Commit and update the system"
-          cd ~/NixOS/
-          git add .
-          git commit -m $argv[1]
-          sudo nixos-rebuild switch --flake .
-        end
-
         function fish_user_key_bindings
           bind \e\[3\;5~ kill-word
           bind \b backward-kill-word
