@@ -91,7 +91,7 @@
           # old configuration file can still take effect.
           # Note: configuration.nix itself is also a Nixpkgs Module,
           home-manager.nixosModules.home-manager
-          ./configuration.nix
+          ./config
         ];
       };
     };
