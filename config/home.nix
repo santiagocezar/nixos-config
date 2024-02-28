@@ -33,10 +33,12 @@ in
       # Apps
       filezilla
       firefox
+      fractal
       kate
       libqalculate
       libreoffice
       libsForQt5.ktexteditor.bin # This adds PolKit support to kate [^1]
+      nheko
       octaveFull
       qalculate-qt
       qbittorrent
