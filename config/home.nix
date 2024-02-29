@@ -38,6 +38,7 @@ in
       libqalculate
       libreoffice
       libsForQt5.ktexteditor.bin # This adds PolKit support to kate [^1]
+      neochat
       nheko
       octaveFull
       qalculate-qt
