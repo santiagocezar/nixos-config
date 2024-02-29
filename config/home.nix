@@ -10,6 +10,7 @@ let
     noto-fonts-cjk
     noto-fonts-emoji
     dejavu_fonts
+    fira-code
   ];
 
   yup = pkgs.writeShellScriptBin "yup" ''
@@ -107,6 +108,11 @@ in
           SDL2_gfx
         ] ++ fonts;
       };
+    };
+
+    gtk.iconTheme = {
+      package = pkgs.papirus-icon-theme;
+      name = "Papirus";
     };
 
     # Manually source 'hm-session-vars.sh' located at
