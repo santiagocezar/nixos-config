@@ -35,11 +35,11 @@ in
       filezilla
       firefox
       fractal
-      kate
+      kdePackages.kate
       libqalculate
       libreoffice
-      libsForQt5.ktexteditor.bin # This adds PolKit support to kate [^1]
-      neochat
+      kdePackages.ktexteditor # This adds PolKit support to kate? [^1]
+      kdePackages.neochat
       nheko
       octaveFull
       qalculate-qt
