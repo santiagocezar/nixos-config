@@ -72,6 +72,7 @@
     ];
   };
 
+  # Enable GTK theming for Wayland apps on KDE
   programs.dconf.enable = true;
 
   security.polkit.enable = true;
