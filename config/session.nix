@@ -44,6 +44,7 @@
 
   environment.systemPackages = with pkgs; [
     gnupg
+    papirus-icon-theme
   ];
 
   programs.gnupg.agent  = {

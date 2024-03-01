@@ -111,11 +111,6 @@ in
       };
     };
 
-    gtk.iconTheme = {
-      package = pkgs.papirus-icon-theme;
-      name = "Papirus";
-    };
-
     # Manually source 'hm-session-vars.sh' located at
     #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
     #  /etc/profiles/per-user/santi/etc/profile.d/hm-session-vars.sh
