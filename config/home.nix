@@ -46,6 +46,7 @@ in
       qbittorrent
       steam
       steam-run
+      thunderbird
       vlc
       vnote
       wineWowPackages.waylandFull
