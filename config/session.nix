@@ -83,3 +83,8 @@
   # Do it here instead of HM to automatically open ports I think
   programs.kdeconnect.enable = true;
 }
+/*
+References:
+^1: https://discourse.nixos.org/t/edit-configuration-nix-using-kate/37218/2
+*/
+

@@ -39,7 +39,6 @@ in
       kdePackages.kate
       libqalculate
       libreoffice
-      kdePackages.ktexteditor # This adds PolKit support to kate? [^1]
       kdePackages.neochat
       nheko
       octaveFull
@@ -147,8 +146,3 @@ in
 
     programs.home-manager.enable = true;
   }
-
-/*
-References:
-^1: https://discourse.nixos.org/t/edit-configuration-nix-using-kate/37218/2
-*/
