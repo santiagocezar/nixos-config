@@ -35,6 +35,7 @@ in
       filezilla
       firefox
       fractal
+      furnace
       kdePackages.kate
       libqalculate
       libreoffice
