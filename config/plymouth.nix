@@ -6,6 +6,7 @@
     plymouth.theme = "bgrt";
     initrd.systemd.enable = true;
     kernelParams = [
+      "amdgpu.seamless=1"
       "splash"
       "quiet"
     ];
