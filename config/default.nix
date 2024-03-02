@@ -13,7 +13,8 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   boot.plymouth.enable = true;
-  boot.plymouth.theme = "breeze";
+  boot.plymouth.theme = "bgrt";
+  boot.initrd.systemd.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.santi = {
