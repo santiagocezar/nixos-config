@@ -45,6 +45,7 @@
   environment.systemPackages = with pkgs; [
     gnupg
     papirus-icon-theme
+    kdePackages.ktexteditor # This adds PolKit support to kate? [^1]
   ];
 
   programs.gnupg.agent  = {
