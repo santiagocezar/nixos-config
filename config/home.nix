@@ -36,6 +36,7 @@ in
       firefox
       fractal
       furnace
+      google-chrome
       kdePackages.kate
       libqalculate
       libreoffice
