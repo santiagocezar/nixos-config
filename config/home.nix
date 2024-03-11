@@ -42,6 +42,7 @@ in
       libreoffice
       kdePackages.neochat
       nheko
+      obsidian
       octaveFull
       qalculate-qt
       qbittorrent
