@@ -66,7 +66,6 @@ in
       poetry
       ps2client
       python3
-      rnix-lsp
       (vscode-with-extensions.override {
         vscodeExtensions = with vsc-extensions.vscode-marketplace; [
           ms-python.python
@@ -78,7 +77,6 @@ in
       gzdoom
       srb2
       srb2kart
-      trenchbroom
 
       # Utilities
       cachix
