@@ -4,24 +4,31 @@
   imports =
     [
       ./plymouth.nix
-      ./hardware-configuration.nix
       ./cachix.nix
       ./containers.nix
       ./session.nix
       ./network.nix
+      ./apps.nix
     ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.santi = {
-    isNormalUser = true;
-    description = "Santi";
-    extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
-    shell = pkgs.fish;
+  users.users = {
+    santi = {
+      isNormalUser = true;
+      description = "Santi";
+      extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
+      shell = pkgs.fish;
+    };
+    flor = {
+      isNormalUser = true;
+      description = "Flor";
+      extraGroups = [ "networkmanager" ];
+      shell = pkgs.fish;
+    };
   };
-
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     useGlobalPkgs = true;
