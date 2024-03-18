@@ -40,6 +40,9 @@
     };
   };
 
+  hardware.logitech.wireless.enable = true;
+  hardware.logitech.wireless.enableGraphical = true;
+
   services.pcscd.enable = true; # what the heck is a smartcard
 
   environment.systemPackages = with pkgs; [
