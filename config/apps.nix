@@ -50,6 +50,7 @@ in
       clang
       clang-tools
       flatpak-builder
+      gh
       git
       godot_4
       nixpkgs-fmt
