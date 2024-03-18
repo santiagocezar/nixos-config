@@ -94,6 +94,4 @@ in
       ] ++ fonts;
     };
     programs.steam.enable = true;
-
-    services.syncthing.enable = true;
   }

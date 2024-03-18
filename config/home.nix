@@ -57,4 +57,5 @@ in
     programs.zoxide.enable = true;
 
     programs.home-manager.enable = true;
+    services.syncthing.enable = true;
   }
