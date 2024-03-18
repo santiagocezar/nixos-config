@@ -35,8 +35,6 @@
     };
   };
 
-
-  networking.hostName = "e102";
   networking.networkmanager.enable = true;
   networking.firewall.enable = false;
   networking.firewall.allowPing = true;

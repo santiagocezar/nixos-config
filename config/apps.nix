@@ -23,17 +23,20 @@ in
   {
     environment.systemPackages = with pkgs; [
       # Apps
+      dolphin-emu
       filezilla
       firefox
       fractal
       furnace
       google-chrome
       kdePackages.kate
+      kdePackages.neochat
+      krita
       libqalculate
       libreoffice
-      kdePackages.neochat
       nheko
       obsidian
+      obs-studio
       octaveFull
       qalculate-qt
       qbittorrent
