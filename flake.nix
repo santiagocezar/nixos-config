@@ -39,45 +39,31 @@
   # The `@` syntax here is used to alias the attribute set of the
   # inputs's parameter, making it convenient to use inside the function.
   outputs = { self, nixpkgs, home-manager, lanzaboote, ... }@inputs: {
-    nixosConfigurations = {
-      "e102" = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        system = "x86_64-linux";
-        modules = [
-          home-manager.nixosModules.home-manager
-          ./hardware/e102.nix
-          ./config
-        ];
-      };
-      "e123" = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        system = "x86_64-linux";
-        modules = [
-          home-manager.nixosModules.home-manager
-          ./hardware/e123.nix
-          ./config
+    nixosConfigurations =
+      let
+        eachHost = hosts: f:
+          builtins.listToAttrs (
+            builtins.map (
+              host: {
+                name = host;
+                value = nixpkgs.lib.nixosSystem (f host);
+              }
+            ) hosts
+          );
+      in
+        eachHost ["e102" "e123"] (host: {
+          specialArgs = { inherit inputs; };
+          system = "x86_64-linux";
+          modules = [
+            home-manager.nixosModules.home-manager
+            ./hardware/${host}.nix
+            ./hosts/${host}.nix
+            ./common
 
-          lanzaboote.nixosModules.lanzaboote
-          ({ pkgs, lib, ... }: {
-
-            environment.systemPackages = [
-              # For debugging and troubleshooting Secure Boot.
-              pkgs.sbctl
-            ];
-
-            # Lanzaboote currently replaces the systemd-boot module.
-            # This setting is usually set to true in configuration.nix
-            # generated at installation time. So we force it to false
-            # for now.
-            boot.loader.systemd-boot.enable = lib.mkForce false;
-
-            boot.lanzaboote = {
-              enable = true;
-              pkiBundle = "/etc/secureboot";
-            };
-          })
-        ];
-      };
-    };
+            ({ pkgs, lib, ... }: {
+              networking.hostName = host;
+            })
+          ];
+        });
   };
 }

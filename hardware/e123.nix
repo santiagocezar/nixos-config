@@ -1,8 +1,6 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  networking.hostName = "e123";
-
   imports =
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
