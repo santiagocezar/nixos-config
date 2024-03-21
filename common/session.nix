@@ -52,7 +52,7 @@
 
   programs.gnupg.agent  = {
     enable = true;
-    pinentryFlavor = "qt";
+    pinentryPackage = pkgs.lib.mkForce pkgs.pinentry-qt;
     enableSSHSupport = true;
   };
 
