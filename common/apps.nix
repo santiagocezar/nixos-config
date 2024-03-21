@@ -24,11 +24,14 @@ in
     environment.systemPackages = with pkgs; [
       # Apps
       dolphin-emu
+      drawio
       filezilla
       firefox
       fractal
       furnace
+      gimp
       google-chrome
+      inkscape
       kdePackages.kate
       kdePackages.neochat
       krita
