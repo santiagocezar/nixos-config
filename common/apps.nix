@@ -44,6 +44,7 @@ in
       qalculate-qt
       qbittorrent
       thunderbird
+      vesktop
       vlc
       vnote
       wineWowPackages.waylandFull
