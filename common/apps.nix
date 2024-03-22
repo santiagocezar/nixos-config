@@ -102,5 +102,6 @@ in
       ] ++ fonts;
     };
     programs.steam.enable = true;
+    programs.direnv.enable = true;
     hardware.opengl.driSupport32Bit = true;
   }
