@@ -55,6 +55,7 @@ in
     };
     programs.starship.enable = true;
     programs.zoxide.enable = true;
+    programs.direnv.enable = true;
 
     programs.home-manager.enable = true;
     services.syncthing.enable = true;
