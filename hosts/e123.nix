@@ -5,6 +5,9 @@
     inputs.lanzaboote.nixosModules.lanzaboote
   ];
 
+  boot.extraModulePackages = [config.boot.kernelPackages.ddcci-driver];
+  boot.kernelModules = ["i2c-dev" "ddcci_backlight"];
+
   environment.systemPackages = [
     # For debugging and troubleshooting Secure Boot.
     pkgs.sbctl
