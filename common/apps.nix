@@ -11,6 +11,8 @@ let
     sudo nixos-rebuild switch --flake path:.
     git add .
     git commit -m "$1"
+    git pull
+    git push
   '';
   fonts = with pkgs; [
     noto-fonts
@@ -37,6 +39,7 @@ in
       krita
       libqalculate
       libreoffice
+      logseq
       nheko
       obsidian
       obs-studio
