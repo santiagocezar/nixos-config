@@ -60,6 +60,7 @@ in
       gh
       git
       godot_4
+      just
       nixpkgs-fmt
       nodePackages.pnpm
       nodejs

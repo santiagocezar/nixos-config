@@ -51,6 +51,7 @@ in
         end
       '';
       shellAliases = {
+        j = "just";
       };
     };
     programs.starship.enable = true;
