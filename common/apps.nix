@@ -75,7 +75,9 @@ in
       })
 
       # Games
+      gamescope
       gzdoom
+      mangohud
       srb2
       srb2kart
 
