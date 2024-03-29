@@ -35,7 +35,7 @@ in
     ];
 
     home.file = {
-      "${config.home.homeDirectory}/.XCompose".source = ./xcompose.txt;
+#       "${config.home.homeDirectory}/.XCompose".source = ./xcompose.txt;
       "${config.xdg.configHome}/plasma-workspace/env/hm.sh".text = ''
         source ${config.home.profileDirectory}/etc/profile.d/hm-session-vars.sh
       '';
