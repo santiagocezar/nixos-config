@@ -68,6 +68,7 @@ in
       xournalpp
 
       # Development
+      arduino-ide
       clang
       clang-tools
       flatpak-builder

@@ -24,7 +24,7 @@
     santi = {
       isNormalUser = true;
       description = "Santi";
-      extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
+      extraGroups = [ "networkmanager" "dialout" "wheel" "libvirtd" ];
       shell = pkgs.fish;
     };
     flor = {
