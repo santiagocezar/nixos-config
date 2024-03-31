@@ -23,4 +23,6 @@
     enable = true;
     pkiBundle = "/etc/secureboot";
   };
+
+  hardware.opentabletdriver.enable = true;
 }
