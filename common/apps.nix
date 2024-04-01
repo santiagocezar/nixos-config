@@ -46,6 +46,7 @@ in
       octaveFull
       qalculate-qt
       qbittorrent
+      scrcpy
       thunderbird
       vesktop
       vlc
@@ -78,6 +79,8 @@ in
       gamescope
       gzdoom
       mangohud
+      osu-lazer-bin
+      prismlauncher
       srb2
       srb2kart
 
