@@ -2,16 +2,15 @@
 
 let
   system = pkgs.system;
-  vsc-extensions = inputs.nix-vscode-extensions.extensions.${system};
   yup = pkgs.writeShellScriptBin "yup" ''
     # Commit and update the system
     set -uex
     cd ~/NixOS/
     git diff -u
-    sudo nixos-rebuild switch --flake path:.
     git add .
+    git pull --rebase
+    sudo nixos-rebuild switch --flake path:.
     git commit -m "$1"
-    git pull
     git push
   '';
   fonts = with pkgs; [
@@ -21,6 +20,20 @@ let
     dejavu_fonts
     fira-code
   ];
+  vsc-extensions = inputs.nix-vscode-extensions.extensions.${system};
+  vscode = pkgs.vscode-with-extensions.override {
+    vscodeExtensions = with vsc-extensions.vscode-marketplace; [
+      ms-python.python
+      ms-vscode-remote.remote-ssh
+    ];
+  };
+  retroarch = pkgs.retroarch.override {
+    cores = with pkgs.libretro; [
+      genesis-plus-gx
+      snes9x
+      beetle-psx-hw
+    ];
+  };
 in
   {
     environment.systemPackages = with pkgs; [
@@ -68,12 +81,7 @@ in
       poetry
       ps2client
       python3
-      (vscode-with-extensions.override {
-        vscodeExtensions = with vsc-extensions.vscode-marketplace; [
-          ms-python.python
-          ms-vscode-remote.remote-ssh
-        ];
-      })
+      vscode
 
       # Games
       gamescope
@@ -81,6 +89,7 @@ in
       mangohud
       osu-lazer-bin
       prismlauncher
+      retroarch
       srb2
       srb2kart
 
