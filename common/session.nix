@@ -42,6 +42,7 @@
 
   hardware.logitech.wireless.enable = true;
   hardware.logitech.wireless.enableGraphical = true;
+  hardware.sane.enable = true;
 
   services.pcscd.enable = true; # what the heck is a smartcard
 
