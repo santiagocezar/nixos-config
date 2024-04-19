@@ -59,6 +59,7 @@ in
       octaveFull
       qalculate-qt
       qbittorrent
+      rnote
       scrcpy
       thunderbird
       vesktop
