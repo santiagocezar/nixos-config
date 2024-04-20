@@ -2,17 +2,7 @@
 
 let
   system = pkgs.system;
-  yup = pkgs.writeShellScriptBin "yup" ''
-    # Commit and update the system
-    set -uex
-    cd ~/NixOS/
-    git diff -u
-    git add .
-    git pull --rebase
-    sudo nixos-rebuild switch --flake path:.
-    git commit -m "$1"
-    git push
-  '';
+  yup = pkgs.writeScriptBin "yup" (builtins.readFile ./../yup.sh);
   fonts = with pkgs; [
     noto-fonts
     noto-fonts-cjk

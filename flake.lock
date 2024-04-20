@@ -151,11 +151,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1714042918,
-        "narHash": "sha256-4AItZA3EQIiSNAxliuYEJumw/LaVfrMv84gYyrs0r3U=",
+        "lastModified": 1713566308,
+        "narHash": "sha256-7Y91t8pheIzjJveUMAPyeh5NOq5F49Nq4Hl2532QpJs=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "0c5704eceefcb7bb238a958f532a86e3b59d76db",
+        "rev": "057117a401a34259c9615ce62218aea7afdee4d3",
         "type": "github"
       },
       "original": {
@@ -195,14 +195,24 @@
       "inputs": {
         "flake-compat": "flake-compat_2",
         "flake-utils": "flake-utils_2",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
+<<<<<<< HEAD
         "lastModified": 1714094499,
         "narHash": "sha256-SC6tm901h2tzRxd6hfzn5/bgLJ8R4ng39R7SIkg6wlo=",
         "owner": "nix-community",
         "repo": "nix-vscode-extensions",
         "rev": "e05ff96b9f710d57d7cd60641f0273176debf222",
+=======
+        "lastModified": 1713576043,
+        "narHash": "sha256-3O6IFwE+fSy4netGsrTFLJ7Eu3BwMR/LEI0BbJfxvPI=",
+        "owner": "nix-community",
+        "repo": "nix-vscode-extensions",
+        "rev": "bf06843f43adfb47596499ed8b3f5bdfe4c26658",
+>>>>>>> 010c42b (update)
         "type": "github"
       },
       "original": {
@@ -213,11 +223,19 @@
     },
     "nixpkgs": {
       "locked": {
+<<<<<<< HEAD
         "lastModified": 1713805509,
         "narHash": "sha256-YgSEan4CcrjivCNO5ZNzhg7/8ViLkZ4CB/GrGBVSudo=",
         "owner": "NixOS",
         "repo": "nixpkgs",
         "rev": "1e1dc66fe68972a76679644a5577828b6a7e8be4",
+=======
+        "lastModified": 1713537308,
+        "narHash": "sha256-XtTSSIB2DA6tOv+l0FhvfDMiyCmhoRbNB+0SeInZkbk=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "5c24cf2f0a12ad855f444c30b2421d044120c66f",
+>>>>>>> 010c42b (update)
         "type": "github"
       },
       "original": {
@@ -243,6 +261,7 @@
         "type": "github"
       }
     },
+<<<<<<< HEAD
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1714076141,
@@ -259,6 +278,8 @@
         "type": "github"
       }
     },
+=======
+>>>>>>> 010c42b (update)
     "pre-commit-hooks-nix": {
       "inputs": {
         "flake-compat": [
@@ -295,7 +316,7 @@
         "home-manager": "home-manager",
         "lanzaboote": "lanzaboote",
         "nix-vscode-extensions": "nix-vscode-extensions",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs"
       }
     },
     "rust-overlay": {
