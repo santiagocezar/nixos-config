@@ -82,6 +82,10 @@
   # https://dataswamp.org/~solene/2022-07-20-nixos-flakes-command-sync-with-system.html
   nix.registry.nixpkgs.flake = inputs.nixpkgs;
 
+  nix.daemonCPUSchedPolicy = lib.mkDefault "idle";
+  nix.daemonIOSchedClass = lib.mkDefault "idle";
+  nix.daemonIOSchedPriority = lib.mkDefault 7;
+
   nixpkgs.config.permittedInsecurePackages = [
     "freeimage-unstable-2021-11-01"
   ];
