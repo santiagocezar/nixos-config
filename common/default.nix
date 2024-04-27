@@ -76,16 +76,23 @@
   programs.fish.enable = true;
   programs.nix-ld.enable = true;
 
-  # Enable flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix = {
+    settings = {
+      # Enable flakes
+      experimental-features = [ "nix-command" "flakes" ];
+      auto-optimise-store = true;
+    };
 
-  # https://dataswamp.org/~solene/2022-07-20-nixos-flakes-command-sync-with-system.html
-  nix.registry.nixpkgs.flake = inputs.nixpkgs;
+    # https://dataswamp.org/~solene/2022-07-20-nixos-flakes-command-sync-with-system.html
+    registry.nixpkgs.flake = inputs.nixpkgs;
 
-  nix.daemonCPUSchedPolicy = pkgs.lib.mkDefault "idle";
-  nix.daemonIOSchedClass = pkgs.lib.mkDefault "idle";
-  nix.daemonIOSchedPriority = pkgs.lib.mkDefault 7;
 
+    # do not bog the pc
+    daemonCPUSchedPolicy = pkgs.lib.mkDefault "idle";
+    daemonIOSchedClass = pkgs.lib.mkDefault "idle";
+    daemonIOSchedPriority = pkgs.lib.mkDefault 7;
+
+  };
   nixpkgs.config.permittedInsecurePackages = [
     "freeimage-unstable-2021-11-01"
   ];
