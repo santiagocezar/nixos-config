@@ -17,6 +17,11 @@ let
       ms-vscode-remote.remote-ssh
     ];
   };
+  obs-studio = pkgs.wrapOBS {
+    plugins = with pkgs.obs-studio-plugins; [
+      obs-vaapi
+    ];
+  };
   retroarch = pkgs.retroarch.override {
     cores = with pkgs.libretro; [
       genesis-plus-gx
