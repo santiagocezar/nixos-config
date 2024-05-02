@@ -1,34 +1,7 @@
 { config, pkgs, inputs, ... }:
 
 let
-  system = pkgs.system;
   yup = pkgs.writeScriptBin "yup" (builtins.readFile ./../yup.sh);
-  fonts = with pkgs; [
-    noto-fonts
-    noto-fonts-cjk
-    noto-fonts-emoji
-    dejavu_fonts
-    fira-code
-  ];
-  vsc-extensions = inputs.nix-vscode-extensions.extensions.${system};
-  vscode = pkgs.vscode-with-extensions.override {
-    vscodeExtensions = with vsc-extensions.vscode-marketplace; [
-      ms-python.python
-      ms-vscode-remote.remote-ssh
-    ];
-  };
-  obs-studio = pkgs.wrapOBS {
-    plugins = with pkgs.obs-studio-plugins; [
-      obs-vaapi
-    ];
-  };
-  retroarch = pkgs.retroarch.override {
-    cores = with pkgs.libretro; [
-      genesis-plus-gx
-      snes9x
-      beetle-psx-hw
-    ];
-  };
 in
   {
     environment.systemPackages = with pkgs; [
@@ -78,7 +51,7 @@ in
       poetry
       ps2client
       python3
-      vscode
+      vscode.fhs
 
       # Games
       gamescope
@@ -108,14 +81,8 @@ in
       ventoy
       xorg.xeyes
       yup
-    ] ++ fonts;
+    ];
 
-    # Add SDL2_gfx to the uh, sandbox? used by `steam-run`
-    programs.steam.package = pkgs.steam.override {
-      extraPkgs = pkgs: with pkgs; [
-        SDL2_gfx
-      ] ++ fonts;
-    };
     programs.steam.enable = true;
     programs.direnv.enable = true;
     hardware.opengl.driSupport32Bit = true;
