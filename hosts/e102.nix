@@ -1,4 +1,4 @@
-{ config, lib, pkgs, modulesPath, ... }:
+{ ... }:
 
 {
   networking.hostName = "e102";
