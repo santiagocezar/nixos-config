@@ -35,7 +35,8 @@ in
       vnote
       wineWowPackages.waylandFull
       xournalpp
-
+      wl-clipboard
+      
       # Development
       arduino-ide
       clang
