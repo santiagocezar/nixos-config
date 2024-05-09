@@ -12,6 +12,7 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelModules = [ "v4l2loopback" ];
 
   boot = {
     plymouth.enable = true;
@@ -49,7 +50,7 @@
 
   time.timeZone = "America/Argentina/Cordoba";
 
-  i18n.defaultLocale = "es_MX.UTF-8";
+  i18n.defaultLocale = "es_ES.UTF-8";
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "es_AR.UTF-8";
     LC_IDENTIFICATION = "es_AR.UTF-8";
