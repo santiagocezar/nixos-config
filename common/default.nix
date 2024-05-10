@@ -89,10 +89,10 @@
     registry.nixpkgs.flake = inputs.nixpkgs;
 
 
-    # do not bog the pc
-    daemonCPUSchedPolicy = pkgs.lib.mkDefault "idle";
-    daemonIOSchedClass = pkgs.lib.mkDefault "idle";
-    daemonIOSchedPriority = pkgs.lib.mkDefault 7;
+    # nvm do bog the pc
+    # daemonCPUSchedPolicy = pkgs.lib.mkDefault "idle";
+    # daemonIOSchedClass = pkgs.lib.mkDefault "idle";
+    # daemonIOSchedPriority = pkgs.lib.mkDefault 7;
 
   };
   nixpkgs.config.permittedInsecurePackages = [
