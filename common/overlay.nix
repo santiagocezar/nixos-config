@@ -21,4 +21,7 @@ final: prev: {
       dejavu_fonts
     ];
   };
+  kdePackages.kservice = prev.kdePackages.kservice.overrideAttrs {
+    patches = [./canonical.patch]
+  };
 }
