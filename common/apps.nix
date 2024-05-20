@@ -10,8 +10,6 @@ in
       drawio
       filezilla
       firefox
-      fractal
-      furnace
       gimp
       google-chrome
       inkscape
@@ -20,8 +18,6 @@ in
       krita
       libqalculate
       libreoffice
-      logseq
-      nheko
       obsidian
       obs-studio
       octaveFull
@@ -32,13 +28,9 @@ in
       thunderbird
       vesktop
       vlc
-      vnote
-      wineWowPackages.waylandFull
       xournalpp
-      wl-clipboard
       
       # Development
-      arduino-ide
       clang
       clang-tools
       flatpak-builder
@@ -50,7 +42,6 @@ in
       nodePackages.pnpm
       nodejs
       poetry
-      ps2client
       python3
       vscode.fhs
 
@@ -60,7 +51,6 @@ in
       mangohud
       osu-lazer-bin
       prismlauncher
-      retroarch
       srb2
       srb2kart
 
@@ -80,6 +70,7 @@ in
       unrar
       usbutils
       ventoy
+      wl-clipboard
       xorg.xeyes
       yup
     ];
