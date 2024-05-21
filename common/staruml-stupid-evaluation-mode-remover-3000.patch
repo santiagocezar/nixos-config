@@ -1,0 +1,13 @@
+diff '--color=auto' -ruN app/src/engine/license-manager.js app-patched/src/engine/license-manager.js
+--- app/src/engine/license-manager.js	2024-05-21 19:20:02.427598094 -0300
++++ app-patched/src/engine/license-manager.js	2024-05-21 19:19:22.247910545 -0300
+@@ -168,8 +168,7 @@
+           setStatus(this, true);
+         },
+         () => {
+-          setStatus(this, false);
+-          UnregisteredDialog.showDialog();
++          setStatus(this, true);
+         },
+       );
+     }

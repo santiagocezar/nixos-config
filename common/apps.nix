@@ -25,6 +25,7 @@ in
       qbittorrent
       rnote
       scrcpy
+      staruml
       thunderbird
       vesktop
       vlc
