@@ -1,9 +1,9 @@
 final: prev: {
-#   obs-studio = prev.wrapOBS {
-#     plugins = with prev.obs-studio-plugins; [
-#       obs-vaapi
-#     ];
-#   };
+  # obs-studio = prev.wrapOBS {
+  #   plugins = with prev.obs-studio-plugins; [
+  #     obs-vaapi
+  #   ];
+  # };
   # Add SDL2_gfx to the uh, sandbox? used by `steam-run`
   steam = prev.steam.override {
     extraPkgs = pkgs: with pkgs; [
@@ -14,9 +14,9 @@ final: prev: {
       dejavu_fonts
     ];
   };
-  kdePackages = prev.kdePackages.overrideScope (kfinal: kprev: {
-    kservice = kprev.kservice.overrideAttrs {
-      patches = [./canonical.patch];
-    };
-  });
+  # kdePackages = prev.kdePackages.overrideScope (kfinal: kprev: {
+  #   kservice = kprev.kservice.overrideAttrs {
+  #     patches = [./canonical.patch];
+  #   };
+  # });
 }
