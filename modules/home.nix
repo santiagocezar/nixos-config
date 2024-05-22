@@ -14,9 +14,9 @@
         # extraSpecialArgs = { inherit inputs; };
         useGlobalPkgs = true;
         useUserPackages = true;
-        users.santi = { config }: {
+        users.santi = {
           home.username = "santi";
-          home.homeDirectory = "/home/${config.home.username}";
+          home.homeDirectory = "/home/santi";
 
           # Backwards compatibility safety!
           home.stateVersion = "23.11";
