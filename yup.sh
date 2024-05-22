@@ -10,6 +10,10 @@ commit_changes() {
 
     git add .
 
+    nix flake update
+
+    git add flake.lock
+
     git commit -m "$1" || :
 }
 
@@ -20,6 +24,7 @@ undo_commit() {
 update () {
     git pull --rebase
 }
+
 
 PREV_REV=$(git rev-parse HEAD)
 
