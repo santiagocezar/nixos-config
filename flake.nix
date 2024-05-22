@@ -15,9 +15,6 @@
 
   outputs = { self, nixpkgs, home-manager, lanzaboote, ... }@inputs: {
     nixosConfigurations =
-      import ./hosts inputs {
-        e102 = { system = "x86_64-linux"; };
-        e123 = { system = "x86_64-linux"; };
-      };
+      import ./mergeModules.nix inputs (import ./modules);
   };
 }

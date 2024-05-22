@@ -31,7 +31,7 @@ update
 
 trap 'undo_commit' SIGINT
 
-if sudo nixos-rebuild switch --flake .; then
+if sudo nixos-rebuild switch --show-trace --flake .; then
     git push
 else
     undo_commit
