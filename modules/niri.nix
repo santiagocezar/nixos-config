@@ -15,6 +15,8 @@
         gamescope
         mako
         libnotify
+        foot
+        fuzzel
       ];
     })
   ];
