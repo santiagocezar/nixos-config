@@ -10,9 +10,9 @@ commit_changes() {
 
     git add .
 
-    nix flake update
+    # nix flake update
 
-    git add flake.lock
+    # git add flake.lock
 
     git commit -m "$1" || :
 }
