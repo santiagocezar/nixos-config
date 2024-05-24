@@ -57,10 +57,10 @@
           listToAttrs (pairs prefixes (prefix: pairs suffixes (suffix: [(format prefix suffix)])));
       in {
         programs.niri.settings = {
-          input.keyboard.xkb.layout = "no";
+          input.keyboard.xkb.layout = "latam";
           input.mouse.accel-speed = 1.0;
           input.touchpad = {
-            tap = false;
+            tap = true;
             dwt = true;
             natural-scroll = true;
             click-method = "clickfinger";
@@ -73,8 +73,8 @@
 
           layout = {
             gaps = 16;
-            struts.left = 64;
-            struts.right = 64;
+            struts.left = 16;
+            struts.right = 16;
             border.width = 4;
           };
 
