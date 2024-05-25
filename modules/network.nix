@@ -25,7 +25,7 @@
         shares = {
           ps2 = {
             "comment" = "ps2";
-            "path" = "/var/ps2";
+            "path" = "/home/santi/PS2";
             "browseable" = "yes";
             "read only" = "no";
             "guest ok" = "yes";
