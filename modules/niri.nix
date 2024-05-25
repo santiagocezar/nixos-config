@@ -17,6 +17,8 @@
         libnotify
         foot
         fuzzel
+        swaybg
+        brightnessctl
       ];
     })
   ];
@@ -242,8 +244,10 @@
           ];
         };
 
+        programs.waybar = {
+          enable = true;
+        };
         programs.foot.settings.csd.preferred = "none";
-
         programs.fuzzel.settings.main.terminal = "foot";
       })
   ];
