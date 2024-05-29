@@ -18,12 +18,19 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, lanzaboote, ... }@inputs: {
-    nixosConfigurations =
-      import ./mergeModules.nix inputs (import ./modules) {
+  outputs = { self, nixpkgs, home-manager, lanzaboote, ... }@inputs:
+    let
+      mergeModules = import ./mergeModules.nix;
+      modules = import ./modules;
+      withISO = import ./withISO.nix;
+      configs = mergeModules inputs modules {
         all = ["e102" "e123" "e1001"];
         pc = ["e102" "e123"];
         srv = ["e1001"];
       };
-  };
+    in
+      {
+        nixosConfigurations =
+          withISO configs;
+      };
 }

@@ -60,7 +60,7 @@
     }
   ];
 
-  e123.system = "x86_x64-linux";
-  e102.system = "x86_x64-linux";
-  e1001.system = "x86_x64-linux";
+  e123.system = "x86_64-linux";
+  e102.system = "x86_64-linux";
+  e1001.system = "x86_64-linux";
 }
