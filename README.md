@@ -1,4 +1,4 @@
-# Systems
+# Dr. Robotnik's Declarative Machines
 
   MODEL | NAME    | FORM FACTOR       | DESCRIPTION
 -------:|:--------|:------------------|:---------------------------------------------------------
