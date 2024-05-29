@@ -1,5 +1,5 @@
 {
-  shared.nixos = [
+  _pc.nixos = [
     ({ pkgs, ... }: {
       time.timeZone = "America/Argentina/Cordoba";
 

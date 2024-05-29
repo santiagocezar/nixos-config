@@ -1,3 +1,3 @@
 {
-  shared.nixos = [./generated/cachix.nix];
+  _pc.nixos = [./generated/cachix.nix];
 }

@@ -20,6 +20,10 @@
 
   outputs = { self, nixpkgs, home-manager, lanzaboote, ... }@inputs: {
     nixosConfigurations =
-      import ./mergeModules.nix inputs (import ./modules);
+      import ./mergeModules.nix inputs (import ./modules) {
+        all = ["e102" "e123" "e1001"];
+        pc = ["e102" "e123"];
+        srv = ["e1001"];
+      };
   };
 }

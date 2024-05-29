@@ -1,5 +1,5 @@
 { home-manager, ... }: {
-  shared.nixos = [
+  _pc.nixos = [
     home-manager.nixosModules.home-manager
     ({ config, pkgs, ... }: {
       users.users = {
@@ -36,7 +36,7 @@
     })
   ];
 
-  shared.home = [
+  _pc.home = [
     ({ config, pkgs, ... }: {
 
       home.packages = with pkgs; [

@@ -1,5 +1,5 @@
 {
-  shared.nixos = [
+  _all.nixos = [
     {
       # Allow unfree packages
       nixpkgs.config.allowUnfree = true;

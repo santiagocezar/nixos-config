@@ -1,7 +1,7 @@
 
 
 {
-  shared.nixos = [
+  _pc.nixos = [
     ({ pkgs, ... }: let
       yup = pkgs.writeScriptBin "yup" (builtins.readFile ./../yup.sh);
     in {

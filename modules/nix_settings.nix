@@ -1,5 +1,5 @@
 { nixpkgs, ... }: {
-  shared.nixos = [
+  _all.nixos = [
     {
       nix = {
         settings = {

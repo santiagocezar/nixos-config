@@ -1,5 +1,5 @@
 {
-  shared.nixos = [
+  _pc.nixos = [
     ({ pkgs, ... }: {
       hardware.bluetooth.enable = true; # enables support for Bluetooth
       hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
@@ -62,4 +62,5 @@
 
   e123.system = "x86_x64-linux";
   e102.system = "x86_x64-linux";
+  e1001.system = "x86_x64-linux";
 }

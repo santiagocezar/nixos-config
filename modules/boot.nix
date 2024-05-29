@@ -1,13 +1,18 @@
 { lanzaboote, ... }: {
-  shared.nixos = [
+  _all.nixos = [
     {
-      boot.loader.systemd-boot.enable = true;
-      boot.loader.efi.canTouchEfiVariables = true;
-
+      boot = {
+        loader.systemd-boot.enable = true;
+        loader.efi.canTouchEfiVariables = true;
+        initrd.systemd.enable = true;
+      };
+    }
+  ];
+  _pc.nixos = [
+    {
       boot = {
         plymouth.enable = true;
         plymouth.theme = "bgrt";
-        initrd.systemd.enable = true;
       };
     }
   ];

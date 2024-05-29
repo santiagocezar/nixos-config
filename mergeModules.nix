@@ -2,6 +2,13 @@
 
 with builtins;
 let
+  # from <nixpkgs>/lib/trivial.nix
+  pipe = foldl' (x: f: f x);
+  const =
+    x:
+    y: x;
+  id = x: x;
+
   importPaths = paths: inputs: map (path:
     let
       mod = import path;
@@ -12,17 +19,51 @@ let
     assert (this ? nixos) -> (isList this.nixos);
     assert (this ? home) -> (isList this.home);
     {
-      nixos = prev.nixos or [] ++ this.nixos or [];
-      home = prev.home or [] ++ this.home or [];
+      nixos = (prev.nixos or []) ++ (this.nixos or []);
+      home = (prev.home or []) ++ (this.home or []);
     } // (if (prev ? system || this ? system) then {
       system = prev.system or this.system;
     } else {});
-  mergeHosts = modules: zipAttrsWith (_host: foldl' merge {}) modules;
-  mergeShared = merged: mapAttrs (_host: merge merged.shared) (builtins.removeAttrs merged ["shared"]);
-  mergeModules = modules: mergeShared (mergeHosts modules);
+  mergeHostList = foldl' merge {};
+  mergeHosts = modules: zipAttrsWith (const mergeHostList) modules;
+  realGroupNames = groups: map (g: "_${g}") (attrNames groups);
+  /*
+  transposeGroups {
+    pc = ["e102" "e123"];
+    laptop = ["e102"];
+    srv = ["e1001"];
+  } => {
+    e1001 = [ "_srv" ];
+    e102 = [ "_laptop" "_pc" ];
+    e123 = [ "_pc" ];
+  }
+  */
+  transposeGroups = groupToHost:
+    zipAttrsWith (const id)
+      (concatMap
+        (group:
+          map
+            (host: {"${host}" = "_${group}";})
+            groupToHost.${group})
+        (attrNames
+          groupToHost));
+  mergeModules =
+    modules: groupToHost:
+      let
+        # groups are treated as individual hosts
+        almostMerged = mergeHosts modules;
+        groupNames = realGroupNames groupToHost;
+        valueGroups = groups: pipe groups [
+          (filter (g: almostMerged ? ${g}))
+          (map (g: almostMerged.${g}))
+          mergeHostList
+        ];
+        ungrouped = mapAttrs (const valueGroups) (transposeGroups groupToHost);
+      in
+        mergeHosts [ungrouped (removeAttrs almostMerged groupNames)];
 in
 
-{nixpkgs, ...}@inputs: paths:
+{nixpkgs, ...}@inputs: paths: groups:
 
 mapAttrs (host: config:
     nixpkgs.lib.nixosSystem {
@@ -36,4 +77,4 @@ mapAttrs (host: config:
         }
       ];
     }
-) (mergeModules (importPaths paths inputs))
+) (mergeModules (importPaths paths inputs) groups)

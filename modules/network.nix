@@ -1,5 +1,5 @@
 {
-  shared.nixos = [
+  _all.nixos = [
     {
       services.avahi.enable = true;
       # Share PS2 games with OPL
@@ -38,14 +38,18 @@
       networking.networkmanager.enable = true;
       networking.firewall.enable = false;
       networking.firewall.allowPing = true;
-      networking.firewall.allowedTCPPorts = [
-        8010 # VLC
-      ];
 
       services.openssh = {
         enable = true;
         settings.PasswordAuthentication = false;
       };
+    }
+  ];
+  _pc.nixos = [
+    {
+      networking.firewall.allowedTCPPorts = [
+        8010 # VLC
+      ];
     }
   ];
 }

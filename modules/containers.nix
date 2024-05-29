@@ -1,5 +1,5 @@
 {
-  shared.nixos = [
+  _pc.nixos = [
     ({ config, pkgs, ... }: {
       services.flatpak.enable = true;
 
