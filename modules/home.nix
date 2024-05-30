@@ -38,17 +38,6 @@
 
   _pc.home = [
     ({ config, pkgs, ... }: {
-
-      home.packages = with pkgs; [
-        noto-fonts
-        noto-fonts-cjk
-        noto-fonts-emoji
-        dejavu_fonts
-        fira-code
-      ];
-
-      fonts.fontconfig.enable = true;
-
       # Manually source 'hm-session-vars.sh' located at
       #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
       #  /etc/profiles/per-user/santi/etc/profile.d/hm-session-vars.sh

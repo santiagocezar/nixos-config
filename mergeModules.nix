@@ -15,12 +15,14 @@ let
     in
       if isFunction mod then mod inputs else mod
   ) paths;
+  ensureList = l:
+      if isList l
+        then l
+        else [l];
   merge = prev: this:
-    assert (this ? nixos) -> (isList this.nixos);
-    assert (this ? home) -> (isList this.home);
     {
-      nixos = (prev.nixos or []) ++ (this.nixos or []);
-      home = (prev.home or []) ++ (this.home or []);
+      nixos = (ensureList prev.nixos or []) ++ (ensureList this.nixos or []);
+      home = (ensureList prev.home or []) ++ (ensureList this.home or []);
     } // (if (prev ? system || this ? system) then {
       system = prev.system or this.system;
     } else {});

@@ -77,8 +77,6 @@
 
       security.polkit.enable = true;
 
-      # Do it here instead of HM to automatically open ports I think
-      programs.kdeconnect.enable = true;
     })
   ];
 }

@@ -81,6 +81,7 @@
       programs.direnv.enable = true;
       programs.fish.enable = true;
       programs.nix-ld.enable = true;
+      programs.kdeconnect.enable = true;
       hardware.opengl.driSupport32Bit = true;
     })
   ];

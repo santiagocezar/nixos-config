@@ -3,6 +3,7 @@
   ./boot.nix
   ./cachix.nix
   ./containers.nix
+  ./fonts.nix
   ./hardware.nix
   ./home.nix
   ./network.nix
