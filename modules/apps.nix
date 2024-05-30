@@ -1,8 +1,8 @@
 
 
 {
-  _pc.nixos = [
-    ({ pkgs, ... }: let
+  _pc.nixos = { pkgs, ... }:
+    let
       yup = pkgs.writeScriptBin "yup" (builtins.readFile ./../yup.sh);
     in {
       environment.systemPackages = with pkgs; [
@@ -83,6 +83,5 @@
       programs.nix-ld.enable = true;
       programs.kdeconnect.enable = true;
       hardware.opengl.driSupport32Bit = true;
-    })
-  ];
+    };
 }
