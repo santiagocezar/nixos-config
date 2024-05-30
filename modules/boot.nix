@@ -1,15 +1,21 @@
 { lanzaboote, ... }: {
-  _all.nixos = {
+  _pc.nixos = {
     boot = {
+      plymouth.enable = true;
+      plymouth.theme = "bgrt";
       loader.systemd-boot.enable = true;
       loader.efi.canTouchEfiVariables = true;
       initrd.systemd.enable = true;
     };
   };
-  _pc.nixos = {
-    boot = {
-      plymouth.enable = true;
-      plymouth.theme = "bgrt";
+  e1001.nixos = {
+    boot.loader = {
+      grub.enable = true;
+      grub.efiSupport = true;
+      grub.efiInstallAsRemovable = true;
+      # boot.loader.efi.efiSysMountPoint = "/boot/efi";
+      # Define on which hard drive you want to install Grub.
+      boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
     };
   };
 

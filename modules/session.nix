@@ -1,19 +1,5 @@
 {
   _pc.nixos = { pkgs, ... }: {
-    time.timeZone = "America/Argentina/Cordoba";
-
-    i18n.defaultLocale = "es_ES.UTF-8";
-    i18n.extraLocaleSettings = {
-      LC_ADDRESS = "es_AR.UTF-8";
-      LC_IDENTIFICATION = "es_AR.UTF-8";
-      LC_MEASUREMENT = "es_AR.UTF-8";
-      LC_MONETARY = "es_AR.UTF-8";
-      LC_NAME = "es_AR.UTF-8";
-      LC_NUMERIC = "es_AR.UTF-8";
-      LC_PAPER = "es_AR.UTF-8";
-      LC_TELEPHONE = "es_AR.UTF-8";
-      LC_TIME = "es_AR.UTF-8";
-    };
 
     # Enable the X11 windowing system.
     services.xserver.enable = true;
@@ -36,8 +22,6 @@
       ];
     };
 
-    # Configure console keymap
-    console.keyMap = "la-latin1";
 
     environment.systemPackages = with pkgs; [
       gnupg

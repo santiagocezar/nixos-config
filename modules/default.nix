@@ -10,6 +10,7 @@
   ./niri.nix
   ./nix_settings.nix
   ./nixpkgs.nix
+  ./region.nix
   ./session.nix
   ./waybar.nix
 ]

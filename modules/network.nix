@@ -40,12 +40,12 @@
 
     services.openssh = {
       enable = true;
-      settings.PasswordAuthentication = false;
     };
   };
   _pc.nixos = {
     networking.firewall.allowedTCPPorts = [
       8010 # VLC
     ];
+    services.openssh.settings.PasswordAuthentication = false;
   };
 }

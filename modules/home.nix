@@ -1,14 +1,6 @@
 { home-manager, ... }: {
   _pc.nixos = { config, pkgs, ... }: {
     imports = [ home-manager.nixosModules.home-manager ];
-    users.users = {
-      santi = {
-        isNormalUser = true;
-        description = "Santi";
-        extraGroups = [ "networkmanager" "dialout" "wheel" "libvirtd" ];
-        shell = pkgs.fish;
-      };
-    };
     home-manager = {
       # extraSpecialArgs = { inherit inputs; };
       useGlobalPkgs = true;
@@ -23,6 +15,17 @@
       };
     };
   };
+
+  _all.nixos = { pkgs, ... }: {
+    users.users.santi = {
+      isNormalUser = true;
+      description = "Santi";
+      extraGroups = [ "networkmanager" "dialout" "wheel" "libvirtd" ];
+      initialPassword = "cambiar";
+      shell = pkgs.fish;
+    };
+  };
+
   e123.nixos = { pkgs, ... }: {
     users.users.flor = {
       isNormalUser = true;

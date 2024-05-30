@@ -55,6 +55,9 @@
        KEYBOARD_KEY_99=end
     '';
   };
+  e1001.nixos = {
+    imports = [ ./generated/e1001_hardware.nix ];
+  };
 
   e123.system = "x86_64-linux";
   e102.system = "x86_64-linux";
