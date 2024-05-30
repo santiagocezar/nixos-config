@@ -18,7 +18,7 @@ in
       usbutils
       unrar
     ];
-  }
+  };
   _pc.nixos = { pkgs, ... }: {
     environment.systemPackages = with pkgs; [
       # Apps
