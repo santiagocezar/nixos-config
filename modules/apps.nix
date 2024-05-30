@@ -15,6 +15,7 @@
       unrar
       (writeScriptBin "yup" (builtins.readFile ./../yup.sh))
     ];
+    programs.fish.enable = true;
   };
   _pc.nixos = { pkgs, ... }: {
     environment.systemPackages = with pkgs; [
@@ -78,7 +79,6 @@
 
     programs.steam.enable = true;
     programs.direnv.enable = true;
-    programs.fish.enable = true;
     programs.nix-ld.enable = true;
     programs.kdeconnect.enable = true;
     hardware.opengl.driSupport32Bit = true;
