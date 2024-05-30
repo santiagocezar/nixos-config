@@ -10,4 +10,5 @@
   ./nix_settings.nix
   ./nixpkgs.nix
   ./session.nix
+  ./waybar.nix
 ]
