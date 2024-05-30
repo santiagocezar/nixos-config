@@ -1,7 +1,3 @@
-let
-  yup = pkgs.writeScriptBin "yup" (builtins.readFile ./../yup.sh);
-in
-
 {
   _all.nixos = { pkgs, ... }: {
     environment.systemPackages = with pkgs; [
@@ -17,6 +13,7 @@ in
       p7zip
       usbutils
       unrar
+      (writeScriptBin "yup" (builtins.readFile ./../yup.sh))
     ];
   };
   _pc.nixos = { pkgs, ... }: {
@@ -77,7 +74,6 @@ in
       ventoy
       wl-clipboard
       xorg.xeyes
-      yup
     ];
 
     programs.steam.enable = true;
