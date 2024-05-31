@@ -24,7 +24,7 @@
       shares = {
         ps2 = {
           "comment" = "ps2";
-          "path" = "/home/santi/PS2";
+          "path" = "/var/lib/shares/PS2";
           "browseable" = "yes";
           "read only" = "no";
           "guest ok" = "yes";
@@ -41,6 +41,7 @@
     services.openssh = {
       enable = true;
     };
+    services.aria2.enable = true;
   };
   _pc.nixos = {
     networking.firewall.allowedTCPPorts = [

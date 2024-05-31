@@ -1,9 +1,9 @@
 {
   _all.nixos = { pkgs, ... }: {
     environment.systemPackages = with pkgs; [
-      git
       cachix
       file
+      git
       htop
       jq
       micro
@@ -11,8 +11,8 @@
       neofetch
       nix-index
       p7zip
-      usbutils
       unrar
+      usbutils
       (writeScriptBin "yup" (builtins.readFile ./../yup.sh))
     ];
     programs.fish.enable = true;

@@ -20,7 +20,7 @@
     users.users.santi = {
       isNormalUser = true;
       description = "Santi";
-      extraGroups = [ "networkmanager" "dialout" "wheel" "libvirtd" ];
+      extraGroups = [ "networkmanager" "dialout" "wheel" "libvirtd" "aria2" ];
       initialPassword = "cambiar";
       shell = pkgs.fish;
     };
