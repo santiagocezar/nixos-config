@@ -41,7 +41,10 @@
     services.openssh = {
       enable = true;
     };
-    services.aria2.enable = true;
+    services.aria2 = {
+      enable = true;
+      rpcSecretFile = "/run/secrets/aria2-rpc-token.txt";
+    };
   };
   _pc.nixos = {
     networking.firewall.allowedTCPPorts = [

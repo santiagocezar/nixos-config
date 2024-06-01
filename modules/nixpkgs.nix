@@ -30,7 +30,7 @@
             ];
             postFixup = (oldAttrs.postFixup or "") + ''
               asar extract $out/opt/StarUML/resources/app.asar app
-              patch -d app/ -p1 < ${./staruml-stupid-evaluation-mode-remover-3000.patch}
+              patch -d app/ -p1 < ${../resources/patches/staruml-stupid-evaluation-mode-remover-3000.patch}
               asar pack app $out/opt/StarUML/resources/app.asar
             '';
           });

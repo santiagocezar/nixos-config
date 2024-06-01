@@ -8,9 +8,10 @@
   ./home.nix
   ./network.nix
   ./niri.nix
-  ./nix_settings.nix
   ./nixpkgs.nix
+  ./nix_settings.nix
   ./region.nix
+  ./secrets.nix
   ./session.nix
   ./waybar.nix
 ]

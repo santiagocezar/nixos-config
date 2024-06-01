@@ -11,6 +11,7 @@
       neofetch
       nix-index
       p7zip
+      sops
       unrar
       usbutils
       (writeScriptBin "yup" (builtins.readFile ./../yup.sh))

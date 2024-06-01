@@ -23,7 +23,7 @@
   };
 
   e123.nixos = { config, pkgs, ... }: {
-    imports = [ ./generated/e123_hardware.nix ];
+    imports = [ ../resources/generated/e123_hardware.nix ];
 
     boot.extraModulePackages = [ config.boot.kernelPackages.ddcci-driver ];
     boot.kernelModules = [ "i2c-dev" "ddcci_backlight" "v4l2loopback" ];
@@ -44,7 +44,7 @@
     hardware.opentabletdriver.enable = true;
   };
   e102.nixos = {
-    imports = [ ./generated/e102_hardware.nix ];
+    imports = [ ../resources/generated/e102_hardware.nix ];
 
     # Turn media keys into text cursor movement keys
     services.udev.extraHwdb = ''
@@ -56,7 +56,7 @@
     '';
   };
   e1001.nixos = {
-    imports = [ ./generated/e1001_hardware.nix ];
+    imports = [ ../resources/generated/e1001_hardware.nix ];
   };
 
   e123.system = "x86_64-linux";

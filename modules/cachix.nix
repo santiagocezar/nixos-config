@@ -1,3 +1,3 @@
 {
-  _pc.nixos = ./generated/cachix.nix;
+  _pc.nixos = ../resources/generated/cachix.nix;
 }
