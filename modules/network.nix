@@ -51,11 +51,12 @@
     services.nginx = {
       enable = true;
       virtualHosts."e1001.cez.ar" = {
+#       virtualHosts."e1001.cez.ar" = {
         locations."/aria2" = {
-          root = "${pkgs.ariang}/share/ariang";
+          root = "${pkgs.ariang}/share/ariang/";
         };
         locations."/aria2rpc" = {
-          proxyPass = "http://127.0.0.1:6800";
+          proxyPass = "http://127.0.0.1:6800/";
           proxyWebsockets = true;
         };
       };
