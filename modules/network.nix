@@ -52,7 +52,7 @@
       enable = true;
       virtualHosts."e1001.cez.ar" = {
 #       virtualHosts."e1001.cez.ar" = {
-        locations."/aria2" = {
+        locations."/aria2/" = {
           alias = "${pkgs.ariang}/share/ariang/";
         };
         locations."/aria2rpc" = {
