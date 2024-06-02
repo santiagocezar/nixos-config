@@ -34,17 +34,6 @@
       };
     };
 
-    services.nginx = {
-      enable = true;
-      locations."/aria2" = {
-        root = "${pkgs.ariang}/share/ariang";
-      };
-      locations."/aria2rpc" = {
-        proxyPass = "http://127.0.0.1:6800";
-        proxyWebsockets = true;
-      };
-    };
-
     networking.networkmanager.enable = true;
     networking.firewall.enable = false;
     networking.firewall.allowPing = true;
@@ -57,6 +46,22 @@
       rpcSecretFile = "/run/secrets/aria2-rpc-token.txt";
     };
   };
+
+  e1001.nixos = { pkgs, ... }: {
+    services.nginx = {
+      enable = true;
+      virtualHosts."e1001.cez.ar" = {
+        locations."/aria2" = {
+          root = "${pkgs.ariang}/share/ariang";
+        };
+        locations."/aria2rpc" = {
+          proxyPass = "http://127.0.0.1:6800";
+          proxyWebsockets = true;
+        };
+      };
+    };
+  };
+
   _pc.nixos = {
     networking.firewall.allowedTCPPorts = [
       8010 # VLC
