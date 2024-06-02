@@ -1,5 +1,5 @@
 {
-  _all.nixos = {
+  _all.nixos = { pkgs, ... }: {
     services.avahi.enable = true;
     # Share PS2 games with OPL
     services.samba = {
@@ -31,6 +31,17 @@
           "public" = "yes";
           "available" = "yes";
         };
+      };
+    };
+
+    services.nginx = {
+      enable = true;
+      locations."/aria2" = {
+        root = "${pkgs.ariang}/share/ariang";
+      };
+      locations."/aria2rpc" = {
+        proxyPass = "http://127.0.0.1:6800";
+        proxyWebsockets = true;
       };
     };
 
