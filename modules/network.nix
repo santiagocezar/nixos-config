@@ -56,7 +56,7 @@
           alias = "${pkgs.ariang}/share/ariang/";
         };
         locations."/aria2rpc" = {
-          proxyPass = "http://127.0.0.1:6800/";
+          proxyPass = "http://127.0.0.1:6800";
           proxyWebsockets = true;
         };
       };
