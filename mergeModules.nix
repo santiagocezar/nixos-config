@@ -8,13 +8,28 @@ let
     x:
     y: x;
   id = x: x;
-
-  importPaths = paths: inputs: map (path:
+  # from <nixpkgs>/lib/strings.nix
+  hasSuffix =
+    # Suffix to check for
+    suffix:
+    # Input string
+    content:
     let
-      mod = import path;
+      lenContent = stringLength content;
+      lenSuffix = stringLength suffix;
     in
-      if isFunction mod then mod inputs else mod
-  ) paths;
+      lenContent >= lenSuffix
+      && substring (lenContent - lenSuffix) lenContent content == suffix;
+
+
+  importAll = dir: inputs: pipe dir [
+    readDir
+    attrNames
+    (map (path: /${dir}/${path}))
+    (filter (path: hasSuffix ".nix" "${path}"))
+    (map (path: import path))
+    (map (mod: if isFunction mod then mod inputs else mod))
+  ];
   ensureList = l:
       if isList l
         then l
@@ -65,7 +80,7 @@ let
         mergeHosts [ungrouped (removeAttrs almostMerged groupNames)];
 in
 
-{nixpkgs, ...}@inputs: paths: groups:
+dir: {nixpkgs, ...}@inputs: groups:
 
 mapAttrs (host: config:
     nixpkgs.lib.nixosSystem {
@@ -79,4 +94,4 @@ mapAttrs (host: config:
         }
       ];
     }
-) (mergeModules (importPaths paths inputs) groups)
+) (mergeModules (importAll dir inputs) groups)

@@ -1,5 +1,5 @@
 {
-  _pc.home = {
+  _pc.home = { config, ... }: {
     home.sessionVariables = {
       EDITOR = "kwrite";
       PNPM_HOME = "/home/santi/.local/share/pnpm";

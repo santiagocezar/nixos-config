@@ -25,9 +25,8 @@
   outputs = { self, nixpkgs, home-manager, lanzaboote, ... }@inputs:
     let
       mergeModules = import ./mergeModules.nix;
-      modules = import ./modules;
       withISO = import ./withISO.nix;
-      configs = mergeModules inputs modules {
+      configs = mergeModules ./modules inputs {
         all = ["e102" "e123" "e1001"];
         pc = ["e102" "e123"];
         srv = ["e1001"];
