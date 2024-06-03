@@ -85,8 +85,10 @@ in
 let
   inherit (inputs) nixpkgs home-manager;
   modules = importAll from inputs;
+  merged = mergeModules modules groups;
 in
-  mapAttrs (host: config:
+  {
+    nixosConfigurations = mapAttrs (host: config:
       nixpkgs.lib.nixosSystem {
         system = config.system;
         specialArgs = { inherit inputs; };
@@ -94,8 +96,20 @@ in
           {
             networking.hostName = host;
             system.stateVersion = "23.11";
-            _module.args.home_modules = config.home;
           }
         ];
       }
-  ) (mergeModules modules groups)
+    ) merged;
+
+    # yes, this is using hostnames instead of usernames
+    homeConfigurations = mapAttrs (host: config:
+      home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.${config.system};
+        modules = config.home ++ [
+          {
+            home.stateVersion = "23.11";
+          }
+        ];
+      }
+    ) merged;
+  }

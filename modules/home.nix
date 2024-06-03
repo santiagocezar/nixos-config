@@ -1,20 +1,20 @@
 { home-manager, ... }: {
-  _pc.nixos = { config, pkgs, ... }: {
-    imports = [ home-manager.nixosModules.home-manager ];
-    home-manager = {
-      # extraSpecialArgs = { inherit inputs; };
-      useGlobalPkgs = true;
-      useUserPackages = true;
-      users.santi = {
-        home.username = "santi";
-        home.homeDirectory = "/home/santi";
-
-        # Backwards compatibility safety!
-        home.stateVersion = "23.11";
-        imports = config._module.args.home_modules;
-      };
-    };
-  };
+  # _pc.nixos = { config, pkgs, ... }: {
+  #   imports = [ home-manager.nixosModules.home-manager ];
+  #   home-manager = {
+  #     # extraSpecialArgs = { inherit inputs; };
+  #     useGlobalPkgs = true;
+  #     useUserPackages = true;
+  #     users.santi = {
+  #       home.username = "santi";
+  #       home.homeDirectory = "/home/santi";
+  #
+  #       # Backwards compatibility safety!
+  #       home.stateVersion = "23.11";
+  #       imports = config._module.args.home_modules;
+  #     };
+  #   };
+  # };
 
   _all.nixos = { pkgs, ... }: {
     users.users.santi = {
