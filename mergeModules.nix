@@ -80,18 +80,22 @@ let
         mergeHosts [ungrouped (removeAttrs almostMerged groupNames)];
 in
 
-dir: {nixpkgs, ...}@inputs: groups:
+{ from, groups, inputs }:
 
-mapAttrs (host: config:
-    nixpkgs.lib.nixosSystem {
-      system = config.system;
-      specialArgs = { inherit inputs; };
-      modules = config.nixos ++ [
-        {
-          networking.hostName = host;
-          system.stateVersion = "23.11";
-          _module.args.home_modules = config.home;
-        }
-      ];
-    }
-) (mergeModules (importAll dir inputs) groups)
+let
+  inherit (inputs) nixpkgs home-manager;
+  modules = importAll from inputs;
+in
+  mapAttrs (host: config:
+      nixpkgs.lib.nixosSystem {
+        system = config.system;
+        specialArgs = { inherit inputs; };
+        modules = config.nixos ++ [
+          {
+            networking.hostName = host;
+            system.stateVersion = "23.11";
+            _module.args.home_modules = config.home;
+          }
+        ];
+      }
+  ) (mergeModules modules groups)

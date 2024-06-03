@@ -23,17 +23,16 @@
   };
 
   outputs = { self, nixpkgs, home-manager, lanzaboote, ... }@inputs:
-    let
-      mergeModules = import ./mergeModules.nix;
-      withISO = import ./withISO.nix;
-      configs = mergeModules ./modules inputs {
-        all = ["e102" "e123" "e1001"];
-        pc = ["e102" "e123"];
-        srv = ["e1001"];
+    {
+      nixosConfigurations = import ./mergeModules.nix {
+        inherit inputs;
+
+        from = ./modules;
+        groups = {
+          all = ["e102" "e123" "e1001"];
+          pc = ["e102" "e123"];
+          srv = ["e1001"];
+        };
       };
-    in
-      {
-        nixosConfigurations =
-          withISO configs;
-      };
+    };
 }
