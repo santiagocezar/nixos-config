@@ -107,6 +107,9 @@ in
         pkgs = nixpkgs.legacyPackages.${config.system};
         modules = config.home ++ [
           {
+            # i guess these two have to be hardcoded
+            home.username = "santi";
+            home.homeDirectory = "/home/santi";
             home.stateVersion = "23.11";
           }
         ];
