@@ -6,6 +6,7 @@
         noto-fonts-emoji
         dejavu_fonts
         fira-code
+        material-symbols
     ];
 
     fonts.fontconfig.enable = true;

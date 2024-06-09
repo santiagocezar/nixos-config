@@ -56,6 +56,8 @@
       in
         listToAttrs (pairs prefixes (prefix: pairs suffixes (suffix: [(format prefix suffix)])));
     in {
+      imports = [ niri.homeModules.niri ];
+      programs.niri.package = pkgs.niri;
       programs.niri.settings = {
         input.keyboard.xkb.layout = "latam";
         input.mouse.accel-speed = 1.0;

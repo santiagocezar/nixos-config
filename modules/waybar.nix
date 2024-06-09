@@ -1,3 +1,20 @@
+/*
+nix doesn't have a way to write \uXXXX escapes, but it doesn't error when
+it finds a string with that, nope, instead it gets interpreted as "uXXXX".
+
+what the hell.
+
+and the feature probably WON'T get added in the near future because it's
+considered to be a breaking change??! aparently already broken code should
+continue to be broken for some reason??
+
+and workaround is kinda funny, JSON does have this feature, so we use that:
+*/
+let
+u = codepoint: builtins.fromJSON ''"\u${codepoint}"'';
+icon = codepoint: ''<span class="icon">${u codepoint}</span>'';
+in
+
 {
   e102.home = [
     {
@@ -5,6 +22,7 @@
         enable = true;
         systemd.enable = true;
       };
+      programs.waybar.style = ../resources/waybar-style.css;
       programs.waybar.settings.mainBar = {
         backlight = {
           format = "{percent}% {icon}";
@@ -46,7 +64,7 @@
           tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
         };
         cpu = {
-          format = "{usage}% ";
+          format = "{usage}% ${icon"e322"}";
           tooltip = false;
         };
         "custom/media" = {
