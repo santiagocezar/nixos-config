@@ -22,40 +22,7 @@
     ];
   };
   e102.home = { config, lib, pkgs, inputs,  ... }:
-    with lib;
-    let
-      binds = {
-        suffixes,
-        prefixes,
-        substitutions ? {},
-      }: let
-        replacer = replaceStrings (attrNames substitutions) (attrValues substitutions);
-        format = prefix: suffix: let
-          actual-suffix =
-            if isList suffix.action
-            then {
-              action = head suffix.action;
-              args = tail suffix.action;
-            }
-            else {
-              inherit (suffix) action;
-              args = [];
-            };
-
-          action = replacer "${prefix.action}-${actual-suffix.action}";
-        in {
-          name = "${prefix.key}+${suffix.key}";
-          value.action.${action} = actual-suffix.args;
-        };
-        pairs = attrs: fn:
-          concatMap (key:
-            fn {
-              inherit key;
-              action = attrs.${key};
-            }) (attrNames attrs);
-      in
-        listToAttrs (pairs prefixes (prefix: pairs suffixes (suffix: [(format prefix suffix)])));
-    in {
+    {
       imports = [ niri.homeModules.niri ];
       programs.niri.package = pkgs.niri;
       programs.niri.settings = {
@@ -84,6 +51,7 @@
 
         binds = with config.lib.niri.actions; let
           sh = spawn "sh" "-c";
+          binds = import ../utils/niri-binds.nix lib;
         in
           lib.attrsets.mergeAttrsList [
             {
@@ -93,7 +61,7 @@
                 "systemctl --user restart waybar.service"
                 "systemctl --user restart swaybg.service"
               ]);
-              "Mod+L".action = spawn "blurred-locker";
+              "Mod+L".action = spawn "${pkgs.swaylock}/bin/swaylock" "-fF";
 
               "XF86AudioRaiseVolume".action = sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+";
               "XF86AudioLowerVolume".action = sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-";
@@ -136,7 +104,7 @@
               suffixes = builtins.listToAttrs (map (n: {
                 name = toString n;
                 value = ["workspace" n];
-              }) (range 1 9));
+              }) (lib.range 1 9));
               prefixes."Mod" = "focus";
               prefixes."Mod+Ctrl" = "move-window-to";
             })
@@ -214,7 +182,7 @@
           {
             draw-border-with-background = false;
             geometry-corner-radius = let
-              r = 8.0;
+              r = 4.0;
             in {
               top-left = r;
               top-right = r;
@@ -244,6 +212,19 @@
         ];
       };
 
+      programs.swaylock.enable = true;
+      services.swayidle = {
+        enable = true;
+        timeouts = [
+          { timeout = 60 * 3; command = "${pkgs.swaylock}/bin/swaylock -fF"; }
+          { timeout = 60 * 5; command = "systemctl suspend"; }
+        ];
+        events = [
+          { event = "before-sleep"; command = "${pkgs.swaylock}/bin/swaylock -fF"; }
+          { event = "lock"; command = "${pkgs.swaylock}/bin/swaylock -fF"; }
+        ];
+        systemdTarget = "niri.service";
+      };
       programs.foot.settings.csd.preferred = "none";
       programs.fuzzel.settings.main.terminal = "foot";
     };
