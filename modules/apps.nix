@@ -18,7 +18,7 @@
     ];
     programs.fish.enable = true;
   };
-  _pc.nixos = { pkgs, ... }: {
+  _pc.nixos = { pkgs, smallPkgs, ... }: {
     environment.systemPackages = with pkgs; [
       # Apps
       dolphin-emu
@@ -33,7 +33,7 @@
       krita
       libqalculate
       libreoffice
-      obsidian
+      smallPkgs.obsidian # TODO: remove after build works again
       obs-studio
       octaveFull
       qalculate-qt
@@ -66,6 +66,7 @@
       mangohud
       osu-lazer-bin
       prismlauncher
+      ringracers
       srb2
       srb2kart
 
