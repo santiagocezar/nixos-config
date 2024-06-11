@@ -2,6 +2,8 @@
   e102.home = { config, pkgs, ... }: {
     home.packages = [ ags.packages.${pkgs.system}.default ];
 
+    start-with-niri = ["ags"];
+
     systemd.user.services."ags" = {
       Unit = {
         Description = "cool panel";

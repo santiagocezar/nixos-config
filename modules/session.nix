@@ -60,6 +60,8 @@
 
     security.polkit.enable = true;
 
+    # Use GNOME keyring on Niri
+    security.pam.services.greetd.enableGnomeKeyring = true;
   };
 }
 
