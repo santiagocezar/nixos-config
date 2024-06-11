@@ -41,10 +41,10 @@
         prefer-no-csd = true;
 
         layout = {
-          gaps = 16;
-          struts.left = 16;
-          struts.right = 16;
-          border.width = 4;
+          gaps = 8;
+          struts.left = 8;
+          struts.right = 8;
+          border.width = 2;
         };
 
         hotkey-overlay.skip-at-startup = true;
@@ -82,8 +82,8 @@
               suffixes."Right" = "column-right";
               prefixes."Mod" = "focus";
               prefixes."Mod+Ctrl" = "move";
-              prefixes."Mod+Shift" = "focus-monitor";
-              prefixes."Mod+Shift+Ctrl" = "move-window-to-monitor";
+              prefixes."Mod+Alt" = "focus-monitor";
+              prefixes."Mod+Alt+Ctrl" = "move-window-to-monitor";
               substitutions."monitor-column" = "monitor";
               substitutions."monitor-window" = "monitor";
             })
@@ -94,11 +94,11 @@
               prefixes."Mod+Ctrl" = "move-column-to";
             })
             (binds {
-              suffixes."U" = "workspace-down";
-              suffixes."I" = "workspace-up";
-              prefixes."Mod" = "focus";
-              prefixes."Mod+Ctrl" = "move-window-to";
-              prefixes."Mod+Shift" = "move";
+              suffixes."Down" = "workspace-down";
+              suffixes."Up" = "workspace-up";
+              prefixes."Mod+Shift" = "focus";
+              prefixes."Mod+Shift+Ctrl" = "move-window-to";
+              prefixes."Mod+Shift+Alt" = "move";
             })
             (binds {
               suffixes = builtins.listToAttrs (map (n: {
@@ -191,15 +191,15 @@
             };
             clip-to-geometry = true;
           }
-          {
-            matches = [{is-focused = false;}];
-            opacity = 0.95;
-          }
-          {
-            # the terminal is already transparent from stylix
-            matches = [{app-id = "^foot$";}];
-            opacity = 1.0;
-          }
+#           {
+#             matches = [{is-focused = false;}];
+#             opacity = 0.95;
+#           }
+#           {
+#             # the terminal is already transparent from stylix
+#             matches = [{app-id = "^foot$";}];
+#             opacity = 1.0;
+#           }
           {
             matches = [
               {

@@ -23,7 +23,8 @@
             dejavu_fonts
           ];
         };
-        staruml = prev.staruml.overrideAttrs (oldAttrs: {
+        staruml = final.callPackage ../resources/staruml.nix {};
+        /* prev.staruml.overrideAttrs (oldAttrs: {
           nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [
             final.asar
           ];
@@ -32,7 +33,7 @@
             patch -d app/ -p1 < ${../resources/patches/staruml-stupid-evaluation-mode-remover-3000.patch}
             asar pack app $out/opt/StarUML/resources/app.asar
           '';
-        });
+        }); */
         # kdePackages = prev.kdePackages.overrideScope (kfinal: kprev: {
         #   kservice = kprev.kservice.overrideAttrs {
         #     patches = [./canonical.patch];
