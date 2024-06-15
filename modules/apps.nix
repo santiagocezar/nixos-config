@@ -29,6 +29,7 @@
       google-chrome
       inkscape
       kdePackages.kate
+      kdePackages.kdenlive
       kdePackages.neochat
       krita
       libqalculate
