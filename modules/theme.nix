@@ -1,7 +1,8 @@
 {
     e102.home = { pkgs, ... }: {
       qt.enable = true;
-      qt.style.name = "breeze";
+#       qt.style.name = "breeze";
+      qt.platformTheme.name = "qtct";
 
       home.packages = with pkgs; [
         papirus-icon-theme
