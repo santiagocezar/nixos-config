@@ -62,8 +62,8 @@
     security.polkit.enable = true;
 
     # Use GNOME keyring on Niri
-    services.gnome.gnome-keyring.enable = true;
-    security.pam.services.sddm.enableGnomeKeyring = true;
+    # services.gnome.gnome-keyring.enable = true;
+    # security.pam.services.sddm.enableGnomeKeyring = true;
   };
 }
 
