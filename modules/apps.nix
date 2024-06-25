@@ -21,10 +21,10 @@
   _pc.nixos = { pkgs, smallPkgs, ... }: {
     environment.systemPackages = with pkgs; [
       # Apps
+      bottles
       dolphin-emu
       drawio
       filezilla
-      firefox
       gimp
       google-chrome
       inkscape
@@ -39,7 +39,6 @@
       octaveFull
       qalculate-qt
       qbittorrent
-      rnote
       scrcpy
       staruml
       thunderbird
@@ -54,7 +53,6 @@
       gh
       godot_4
       just
-      nixpkgs-fmt
       nodePackages.pnpm
       nodejs
       poetry
@@ -80,6 +78,7 @@
       xorg.xeyes
     ];
 
+    programs.firefox.enable = true;
     programs.steam.enable = true;
     programs.direnv.enable = true;
     programs.nix-ld.enable = true;
