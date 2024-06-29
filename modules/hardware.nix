@@ -57,6 +57,7 @@
   };
   e1001.nixos = {
     imports = [ ../resources/generated/e1001_hardware.nix ];
+    services.logind.lidSwitch = "ignore";
   };
 
   e123.system = "x86_64-linux";
