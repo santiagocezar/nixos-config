@@ -11,6 +11,7 @@
       neofetch
       nix-index
       p7zip
+      ripgrep
       sops
       unrar
       usbutils
@@ -34,9 +35,10 @@
       krita
       libqalculate
       libreoffice
-      smallPkgs.obsidian # TODO: remove after build works again
+      obsidian
       obs-studio
       octaveFull
+      openutau
       qalculate-qt
       qbittorrent
       scrcpy
@@ -83,6 +85,6 @@
     programs.direnv.enable = true;
     programs.nix-ld.enable = true;
     programs.kdeconnect.enable = true;
-    hardware.opengl.driSupport32Bit = true;
+    hardware.graphics.enable32Bit = true;
   };
 }
