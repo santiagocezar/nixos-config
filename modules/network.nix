@@ -8,6 +8,7 @@
       publish = {
         enable = true;
         addresses = true;
+        userServices = true;
         workstation = true;
       };
     };
@@ -79,6 +80,12 @@
     ];
     services.nginx = {
       enable = true;
+      virtualHosts."play.local" = {
+        locations."/" = {
+          proxyPass = "http://127.0.0.1:8096";
+          proxyWebsockets = true;
+        };
+      };
       virtualHosts."e1001.cez.ar" = {
 #       virtualHosts."e1001.cez.ar" = {
         locations."/aria2/" = {

@@ -1,3 +1,4 @@
+# https://andrewdupont.net/2022/01/27/using-mdns-aliases-within-your-home-network/
 {
   _all.nixos = { lib, pkgs, config, ... }:
   with lib;
@@ -17,7 +18,7 @@
         trap _term SIGTERM
 
         for name in "$@"; do
-          avahi-publish -a "$name.$host" -R "$ip" &
+          avahi-publish -a "$name.local" -R "$ip" &
         done
 
         sleep infinity
@@ -33,6 +34,13 @@
         };
       };
       config = mkIf cfg.enable {
+        services.avahi = {
+          enable = true;
+          publish = {
+            enable = true;
+            userServices = true;
+          };
+        };
         systemd.services.avahi-aliases = {
           enable = true;
           after = [ "network.target" "avahi-daemon.service" ];
