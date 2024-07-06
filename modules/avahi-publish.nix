@@ -5,7 +5,7 @@
     cfg = config.services.avahi-aliases;
     avahi-aliases = pkgs.writeShellApplication {
       name = "avahi-aliases";
-      runtimeInputs = [ pkgs.avahi pkgs.net-tools ];
+      runtimeInputs = [ pkgs.avahi pkgs.nettools ];
       text = ''
         host=$(hostname).local
         ip=$(avahi-resolve -4 -n "$host" | cut -f2)
