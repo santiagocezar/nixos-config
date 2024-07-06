@@ -54,6 +54,11 @@
   };
 
   e1001.nixos = { pkgs, ... }: {
+    services.avahi-aliases = {
+      enable = true;
+      aliases = [
+      ];
+    }
     services.aria2 = {
       enable = true;
       rpcSecretFile = "/run/secrets/aria2-rpc-token.txt";
