@@ -34,10 +34,14 @@
       };
       config = mkIf cfg.enable {
         systemd.services.avahi-aliases = {
+          enable = true;
           after = [ "network.target" "avahi-daemon.service" ];
+          wantedBy = [ "multi-user.target" ];
           partOf = "avahi-daemon.service";
-          restart = "no";
-          serviceConfig.ExecStart = "${avahi-aliases}/bin/avahi-aliases ${concatStringSep " " cfg.aliases}";
+          serviceConfig = {
+            ExecStart = "${avahi-aliases}/bin/avahi-aliases ${concatStringSep " " cfg.aliases}";
+            Restart = "no";
+          };
         };
       };
     };
