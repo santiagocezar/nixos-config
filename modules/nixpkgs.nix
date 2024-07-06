@@ -16,6 +16,7 @@
         #   ];
         # };
         # Add SDL2_gfx to the uh, sandbox? used by `steam-run`
+        intel-vaapi-driver = prev.intel-vaapi-driver.override { enableHybridCodec = true; };
         steam = prev.steam.override {
           extraPkgs = pkgs: with pkgs; [
             SDL2_gfx

@@ -27,10 +27,6 @@
 
     boot.extraModulePackages = [ config.boot.kernelPackages.ddcci-driver ];
     boot.kernelModules = [ "i2c-dev" "ddcci_backlight" "v4l2loopback" ];
-
-    nixpkgs.config.packageOverrides = pkgs: {
-      intel-vaapi-driver = pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
-    };
     hardware.graphics = {
       enable = true;
       extraPackages = with pkgs; [
@@ -58,6 +54,22 @@
   e1001.nixos = {
     imports = [ ../resources/generated/e1001_hardware.nix ];
     services.logind.lidSwitch = "ignore";
+    nixpkgs.config.packageOverrides = pkgs: {
+      vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
+    };
+    hardware.graphics = { # hardware.opengl in 24.05
+      enable = true;
+      # enableHybridCodec override in nixpkgs.nix
+      extraPackages = with pkgs; [
+        intel-media-driver
+        intel-vaapi-driver # previously vaapiIntel
+        vaapiVdpau
+        libvdpau-va-gl
+        intel-compute-runtime # OpenCL filter support (hardware tonemapping and subtitle burn-in)
+        vpl-gpu-rt # QSV on 11th gen or newer
+        intel-media-sdk # QSV up to 11th gen
+      ];
+    };
   };
 
   e123.system = "x86_64-linux";
