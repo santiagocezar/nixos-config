@@ -3,7 +3,7 @@
   with lib;
   let
     cfg = config.services.avahi-aliases;
-    avahi-aliases = writeShellApplication {
+    avahi-aliases = pkgs.writeShellApplication {
       name = "avahi-aliases";
       runtimeInputs = [ pkgs.avahi ];
       text = ''
@@ -37,9 +37,9 @@
           enable = true;
           after = [ "network.target" "avahi-daemon.service" ];
           wantedBy = [ "multi-user.target" ];
-          partOf = "avahi-daemon.service";
+          partOf = [ "avahi-daemon.service" ];
           serviceConfig = {
-            ExecStart = "${avahi-aliases}/bin/avahi-aliases ${concatStringSep " " cfg.aliases}";
+            ExecStart = "${avahi-aliases}/bin/avahi-aliases ${builtins.concatStringsSep " " cfg.aliases}";
             Restart = "no";
           };
         };
