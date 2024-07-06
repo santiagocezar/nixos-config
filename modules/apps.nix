@@ -1,4 +1,4 @@
-{
+{ self, ... }: {
   _all.nixos = { pkgs, ... }: {
     environment.systemPackages = with pkgs; [
       cachix
@@ -15,7 +15,7 @@
       sops
       unrar
       usbutils
-      (writeScriptBin "yup" (builtins.readFile ./../yup.sh))
+      self.packages.${pkgs.system}.yup
     ];
     programs.fish.enable = true;
   };

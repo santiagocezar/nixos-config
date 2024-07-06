@@ -48,6 +48,15 @@
   };
 
   e1001.nixos = { pkgs, ... }: {
+    services.jellyfin = {
+      enable = true;
+      openFirewall = true;
+    };
+    environment.systemPackages = [
+      pkgs.jellyfin
+      pkgs.jellyfin-web
+      pkgs.jellyfin-ffmpeg
+    ];
     services.nginx = {
       enable = true;
       virtualHosts."e1001.cez.ar" = {

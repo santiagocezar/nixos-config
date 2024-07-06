@@ -33,14 +33,27 @@
   };
 
   outputs = { self, nixpkgs, home-manager, lanzaboote, ... }@inputs:
-    import ./mergeModules.nix {
-      inherit inputs;
+    let
+      config = import ./mergeModules.nix {
+        inherit inputs;
 
-      from = ./modules;
-      groups = {
-        all = ["e102" "e123" "e1001"];
-        pc = ["e102" "e123"];
-        srv = ["e1001"];
+        from = ./modules;
+        groups = {
+          all = ["e102" "e123" "e1001"];
+          pc = ["e102" "e123"];
+          srv = ["e1001"];
+        };
       };
-    };
+    in
+      {
+        inherit (config) homeConfigurations nixosConfigurations;
+        packages.x86_64-linux = with nixpkgs.legacyPackages.x86_64-linux; {
+          yup = writeShellApplication {
+            name = "yup";
+            runtimeInputs = [ git ];
+            text = builtins.readFile resources/yup.sh;
+          };
+          default = self.packages.x86_64-linux.yup;
+        };
+      };
 }
