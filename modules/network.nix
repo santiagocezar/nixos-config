@@ -57,8 +57,10 @@
     services.avahi-aliases = {
       enable = true;
       aliases = [
+        "play"
+        "aria2"
       ];
-    }
+    };
     services.aria2 = {
       enable = true;
       rpcSecretFile = "/run/secrets/aria2-rpc-token.txt";

@@ -7,8 +7,8 @@
       name = "avahi-aliases";
       runtimeInputs = [ pkgs.avahi ];
       text = ''
-        host=$(hostname)
-        ip=$(avahi-resolve -4 -n "$HOST.local" | cut -f2)
+        host=$(hostname).local
+        ip=$(avahi-resolve -4 -n "$host" | cut -f2)
 
         function _term {
           pkill -P $$
@@ -17,7 +17,7 @@
         trap _term SIGTERM
 
         for name in "$@"; do
-          /usr/bin/avahi-publish -a "$name" -R "$ip" &
+          /usr/bin/avahi-publish -a "$name.$host" -R "$ip" &
         done
 
         sleep infinity
