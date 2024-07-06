@@ -17,7 +17,7 @@
         trap _term SIGTERM
 
         for name in "$@"; do
-          /usr/bin/avahi-publish -a "$name.$host" -R "$ip" &
+          avahi-publish -a "$name.$host" -R "$ip" &
         done
 
         sleep infinity
