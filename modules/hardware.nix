@@ -51,15 +51,12 @@
        KEYBOARD_KEY_99=end
     '';
   };
-  e1001.nixos = {
+  e1001.nixos = { pkgs, ... }: {
     imports = [ ../resources/generated/e1001_hardware.nix ];
     services.logind.lidSwitch = "ignore";
-    nixpkgs.config.packageOverrides = pkgs: {
-      vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
-    };
-    hardware.graphics = { # hardware.opengl in 24.05
+    # enableHybridCodec override in nixpkgs.nix
+    hardware.graphics = {
       enable = true;
-      # enableHybridCodec override in nixpkgs.nix
       extraPackages = with pkgs; [
         intel-media-driver
         intel-vaapi-driver # previously vaapiIntel
