@@ -1,10 +1,11 @@
 {
   _all.nixos = { lib, pkgs, config, ... }:
+  with lib;
   let
     cfg = config.services.avahi-aliases;
     avahi-aliases = writeShellApplication {
       name = "avahi-aliases";
-      runtimeInputs = [ avahi ];
+      runtimeInputs = [ pkgs.avahi ];
       text = ''
         host=$(hostname)
         ip=$(avahi-resolve -4 -n "$HOST.local" | cut -f2)
@@ -24,7 +25,7 @@
     };
   in
     {
-      options.services.avahi-aliases = with lib; {
+      options.services.avahi-aliases = {
         enable = mkEnableOption "Publish local address to mDNS or something like that";
         aliases = mkOption {
           type = types.listOf types.str;
