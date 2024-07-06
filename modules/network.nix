@@ -41,13 +41,16 @@
     services.openssh = {
       enable = true;
     };
+  };
+
+  e1001.nixos = { pkgs, ... }: {
     services.aria2 = {
       enable = true;
       rpcSecretFile = "/run/secrets/aria2-rpc-token.txt";
     };
-  };
-
-  e1001.nixos = { pkgs, ... }: {
+    systemd.tmpfiles.rules = [
+      "d /var/lib/media 0777 jellyfin jellyfin"
+    ];
     services.jellyfin = {
       enable = true;
       openFirewall = true;
