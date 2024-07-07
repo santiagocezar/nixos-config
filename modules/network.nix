@@ -55,6 +55,7 @@
   };
 
   e1001.nixos = { pkgs, ... }: {
+    networking.networkmanager.wifi.powersave = false;
     services.avahi-aliases = {
       enable = true;
       aliases = [
