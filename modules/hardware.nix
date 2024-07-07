@@ -53,12 +53,14 @@
   };
   e1001.nixos = { pkgs, ... }: {
     imports = [ ../resources/generated/e1001_hardware.nix ];
+    boot.extraModprobeConfig = ''
+      options rtl8723be ips=0 fwlps=0 # stable wifi hopefully
+    '';
     services.logind.lidSwitch = "ignore";
     # enableHybridCodec override in nixpkgs.nix
     hardware.graphics = {
       enable = true;
       extraPackages = with pkgs; [
-        intel-media-driver
         intel-vaapi-driver # previously vaapiIntel
         vaapiVdpau
         libvdpau-va-gl
