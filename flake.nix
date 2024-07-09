@@ -52,6 +52,7 @@
             name = "yup";
             runtimeInputs = [ git ];
             text = builtins.readFile resources/yup.sh;
+            runtimeEnv.SRC = self;
           };
           default = self.packages.x86_64-linux.yup;
         };
