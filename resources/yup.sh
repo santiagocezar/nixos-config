@@ -103,7 +103,7 @@ yup__refresh () {
     nix flake update
 
     git add flake.lock
-    git commit "update inputs"
+    git commit -m "update inputs"
 
     build_or_undo "$PREV_REV"
 }
