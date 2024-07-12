@@ -40,7 +40,7 @@ yup__bootstrap () {
         fi
         CONFIG_REPO="$SRC"
     fi
-    sudo nixos-rebuild switch --flake "$CONFIG_REPO"
+    sudo nixos-rebuild switch --fast --flake "$CONFIG_REPO"
 }
 
 get_upstream () {

@@ -110,6 +110,10 @@
     networking.firewall.allowedTCPPorts = [
       8010 # VLC
     ];
+    networking.nameservers = [
+      "8.8.8.8"
+      "8.8.4.4"
+    ];
     services.openssh.settings.PasswordAuthentication = false;
   };
 }

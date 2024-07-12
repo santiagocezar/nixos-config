@@ -38,7 +38,6 @@
       obsidian
       obs-studio
       octaveFull
-      openutau
       qalculate-qt
       qbittorrent
       scrcpy
