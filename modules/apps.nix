@@ -49,8 +49,6 @@
       xournalpp
 
       # Development
-      clang
-      clang-tools
       flatpak-builder
       gh
       godot_4
