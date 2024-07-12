@@ -43,38 +43,32 @@ yup__bootstrap () {
     sudo nixos-rebuild switch --flake "$CONFIG_REPO"
 }
 
-yup__update () {
-    cd "$CONFIG_REPO"
-
+get_upstream () {
     git fetch || msg_warn Failed to fetch changes from upstream, config may be out of date.
     LOCAL=$(git rev-parse @)
     REMOTE=$(git rev-parse '@{u}')
     BASE=$(git merge-base @ '@{u}')
 
-    do_commit=
-    if ! git diff-files --quiet; then
-        if [ -z "${1:-}" ]; then
-            msg_err There have been changes to the config, please add a commit message to save them before updating.
-            exit 1
-        else
-            do_commit=true
-        fi
-    fi
-
-    PREV_REV=$(git rev-parse HEAD)
-
-    if [ "$do_commit" = "true" ]; then
-        git add . || :
-        git commit -m "$1" || :
-    fi
-
     if [ "$LOCAL" != "$REMOTE" ] && [ "$LOCAL" = "$BASE" ]; then
         msg_info Upstream has been updated, merging changes...
         git rebase || { msg_err that\'s not good... :/; exit 1; }
     fi
+}
 
+check_dirty () {
+    if ! git diff-files --quiet; then
+        if [ -z "${1:-}" ]; then
+            return 1
+        fi
+
+        git add . || :
+        git commit -m "$1" || :
+    fi
+}
+
+build_or_undo () {
     if ! nixos-rebuild dry-build --flake .; then
-        git reset --soft "$PREV_REV"
+        git reset --soft "$1"
         exit 1
     fi
 
@@ -83,12 +77,43 @@ yup__update () {
     sudo nixos-rebuild switch --flake .
 }
 
+yup__update () {
+    cd "$CONFIG_REPO"
+
+    PREV_REV=$(git rev-parse HEAD)
+
+    check_dirty "$1" || {
+        msg_err There have been changes to the config, please add a commit message to save them before updating.
+        exit 1
+    }
+
+    get_upstream
+
+    build_or_undo "$PREV_REV"
+}
+
+yup__refresh () {
+    check_dirty || {
+        msg_err There have been changes to the config, commit them separately.
+        exit 1
+    }
+
+    PREV_REV=$(git rev-parse HEAD)
+
+    nix flake update
+
+    git add flake.lock
+    git commit "update inputs"
+
+    build_or_undo "$PREV_REV"
+}
+
 cmdname=$1
 shift
 echo "$@"
 if declare -f "yup__$cmdname" >/dev/null 2>&1; then
     "yup__$cmdname" "$@"
 else
-    msg_err unknown command "$cmdname".
+    msg_err unknown command \""$cmdname"\".
     exit 1
 fi
