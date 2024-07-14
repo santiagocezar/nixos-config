@@ -55,6 +55,7 @@
       nodePackages.pnpm
       nodejs
       poetry
+      pcsx2
       python3
       vscode.fhs
 
