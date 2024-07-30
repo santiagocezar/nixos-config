@@ -14,6 +14,9 @@
       mode = "0440";
       group = "aria2";
     };
-    sops.secrets."dns-token" = { };
+    sops.secrets."dns-token" = {
+      mode = "0440";
+      group = "inadyn";
+    };
   };
 }

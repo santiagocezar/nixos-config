@@ -75,17 +75,16 @@
       enable = true;
       openFirewall = true;
     };
-    services.ddclient = {
+    services.inadyn = {
       enable = true;
-      protocol = "cloudflare";
-      use = "web, web=icanhazip.com/";
-      zone = "cez.ar";
-      username = "santiagocezar2013@gmail.com";
-      passwordFile = "/run/credentials/ddclient.service/credentials";
-      domains = [ "e123.cez.ar" "e1001.cez.ar" "play.cez.ar" ];
+      settings.provider."cloudflare.com" = {
+        username = "cez.ar";
+        include = config.sops.secrets.dns-token.path;
+        hostname = [ "e123.cez.ar" "e1001.cez.ar" "play.cez.ar" ];
+        ttl = 1;
+        proxied = true;
+      };
     };
-    systemd.services.ddclient.serviceConfig.LoadCredential =
-      "credentials:${config.sops.secrets.dns-token.path}";
     environment.systemPackages = [
       pkgs.jellyfin
       pkgs.jellyfin-web
