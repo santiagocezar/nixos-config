@@ -46,7 +46,7 @@
     };
 
     networking.networkmanager.enable = true;
-    networking.firewall.enable = false;
+    networking.firewall.enable = true;
     networking.firewall.allowPing = true;
 
     services.openssh = {
