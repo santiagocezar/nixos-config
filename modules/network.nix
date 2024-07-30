@@ -78,6 +78,7 @@
     services.ddclient = {
       enable = true;
       protocol = "cloudflare";
+      use = "web, web=icanhazip.com/";
       zone = "cez.ar";
       username = "santiagocezar2013@gmail.com";
       passwordFile = "/run/credentials/ddclient.service/credentials";
