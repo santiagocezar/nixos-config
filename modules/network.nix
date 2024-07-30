@@ -115,6 +115,9 @@
         };
       };
     };
+    networking.firewall.allowedTCPPorts = [
+      80 443 # http[s]
+    ];
   };
 
   _pc.nixos = {
