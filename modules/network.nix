@@ -53,9 +53,15 @@
       enable = true;
       settings.PasswordAuthentication = false;
     };
+    services.fail2ban = {
+      enable = true;
+      ignoreIP = [
+        "192.168.0.0/16"
+      ];
+    };
   };
 
-  e1001.nixos = { pkgs, ... }: {
+  e1001.nixos = { config, pkgs, ... }: {
     networking.networkmanager.wifi.powersave = false;
     services.avahi-aliases = {
       enable = true;
@@ -68,6 +74,7 @@
       enable = true;
       rpcSecretFile = "/run/secrets/aria2-rpc-token.txt";
     };
+  
     systemd.tmpfiles.rules = [
       "d /var/lib/media 0777 jellyfin jellyfin"
     ];
@@ -75,6 +82,15 @@
       enable = true;
       openFirewall = true;
     };
+    services.ddclient = {
+      protocol = "cloudflare";
+      zone = "cez.ar";
+      username = "santiagocezar2013@gmail.com";
+      passwordFile = "/run/credentials/ddclient.service/credentials";
+      domains = [ "e123.cez.ar" "e1001.cez.ar" "play.cez.ar" ];
+    };
+    systemd.services.ddclient.serviceConfig.LoadCredential =
+      "credentials:${config.sops.secrets.dns-token.path}";
     environment.systemPackages = [
       pkgs.jellyfin
       pkgs.jellyfin-web
@@ -82,7 +98,7 @@
     ];
     services.nginx = {
       enable = true;
-      virtualHosts."play.local" = {
+      virtualHosts."play.cez.ar" = {
         locations."/" = {
           proxyPass = "http://127.0.0.1:8096";
           proxyWebsockets = true;
