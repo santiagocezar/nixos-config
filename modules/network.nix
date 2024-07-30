@@ -51,6 +51,7 @@
 
     services.openssh = {
       enable = true;
+      settings.PasswordAuthentication = false;
     };
   };
 
@@ -110,6 +111,5 @@
     networking.firewall.allowedTCPPorts = [
       8010 # VLC
     ];
-    services.openssh.settings.PasswordAuthentication = false;
   };
 }
