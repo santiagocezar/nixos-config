@@ -82,7 +82,7 @@
         include = config.sops.secrets.dns-token.path;
         hostname = [ "e123.cez.ar" "e1001.cez.ar" "play.cez.ar" ];
         ttl = 1;
-        proxied = true;
+        proxied = false;
       };
     };
     environment.systemPackages = [
