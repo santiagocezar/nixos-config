@@ -63,13 +63,6 @@
 
   e1001.nixos = { config, pkgs, ... }: {
     networking.networkmanager.wifi.powersave = false;
-    services.avahi-aliases = {
-      enable = true;
-      aliases = [
-        "play"
-        "aria2"
-      ];
-    };
     services.aria2 = {
       enable = true;
       rpcSecretFile = "/run/secrets/aria2-rpc-token.txt";
@@ -83,6 +76,7 @@
       openFirewall = true;
     };
     services.ddclient = {
+      enable = true;
       protocol = "cloudflare";
       zone = "cez.ar";
       username = "santiagocezar2013@gmail.com";
