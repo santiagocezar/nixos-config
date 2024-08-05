@@ -67,10 +67,6 @@
       enable = true;
       rpcSecretFile = "/run/secrets/aria2-rpc-token.txt";
     };
-  
-    systemd.tmpfiles.rules = [
-      "d /var/lib/media 0777 jellyfin jellyfin"
-    ];
     services.jellyfin = {
       enable = true;
       openFirewall = true;
