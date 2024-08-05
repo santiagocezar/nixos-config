@@ -2,8 +2,8 @@
   e1001.nixos = { config, pkgs, ... }: {
     users.groups = {
       media.members = [
-        "jellyfin" 
-        "aria2" 
+        "jellyfin"
+        "aria2"
       ];
     };
     systemd.tmpfiles.rules = [
