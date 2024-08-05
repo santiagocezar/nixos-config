@@ -1,6 +1,6 @@
 {
   e1001.nixos = { config, pkgs, ... }: {
-    user.groups = {
+    users.groups = {
       media.members = [
         "jellyfin" 
         "aria2" 
