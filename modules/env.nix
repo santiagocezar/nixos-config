@@ -3,7 +3,7 @@
     home.sessionVariables = {
       EDITOR = "kwrite";
       PNPM_HOME = "/home/santi/.local/share/pnpm";
-      NIXOS_OZONE_WL = "1";
+      # NIXOS_OZONE_WL = "1";
     };
     home.sessionPath = [
       "$HOME/.local/bin"
