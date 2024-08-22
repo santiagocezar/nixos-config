@@ -42,6 +42,8 @@
   e102.nixos = {
     imports = [ ../resources/generated/e102_hardware.nix ];
 
+	services.tlp.enable = true;
+
     # Turn media keys into text cursor movement keys
     services.udev.extraHwdb = ''
       evdev:input:b0011v0001p0001*
