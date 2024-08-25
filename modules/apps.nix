@@ -41,6 +41,7 @@
       qalculate-qt
       qbittorrent
       scrcpy
+      spotify
       staruml
       thunderbird
       vesktop
