@@ -1,6 +1,7 @@
 { inputs, ... }: {
-  _all.nixos = {
+  _all.nixos = { pkgs, ... } {
     nix = {
+      package = pkgs.lix;
       settings = {
         # Enable flakes
         experimental-features = [ "nix-command" "flakes" ];

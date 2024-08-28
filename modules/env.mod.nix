@@ -14,6 +14,11 @@
       "${config.xdg.configHome}/plasma-workspace/env/hm.sh".text = ''
         source ${config.home.profileDirectory}/etc/profile.d/hm-session-vars.sh
       '';
+      ".gitignore".text = ''
+        .direnv
+        .directory
+        *.kate-swp
+      '';
     };
   };
 }
