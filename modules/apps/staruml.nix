@@ -32,7 +32,7 @@ stdenv.mkDerivation (finalAttrs: {
     mv usr/share/{applications,icons} $out/share
 
     asar extract opt/StarUML/resources/app.asar app
-    patch -d app/ -p1 < ${./patches/staruml-stupid-evaluation-mode-remover-3000.patch}
+    patch -d app/ -p1 < ${./staruml-stupid-evaluation-mode-remover-3000.patch}
     asar pack app $out/share/staruml/app.asar
 
     substituteInPlace $out/share/applications/staruml.desktop \

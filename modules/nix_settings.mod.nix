@@ -1,4 +1,4 @@
-{ nixpkgs, ... }: {
+{ inputs, ... }: {
   _all.nixos = {
     nix = {
       settings = {
@@ -9,13 +9,7 @@
       };
 
       # https://dataswamp.org/~solene/2022-07-20-nixos-flakes-command-sync-with-system.html
-      registry.nixpkgs.flake = nixpkgs;
-
-
-      # nvm do bog the pc
-      # daemonCPUSchedPolicy = pkgs.lib.mkDefault "idle";
-      # daemonIOSchedClass = pkgs.lib.mkDefault "idle";
-      # daemonIOSchedPriority = pkgs.lib.mkDefault 7;
+      registry.nixpkgs.flake = inputs.nixpkgs;
     };
   };
 }

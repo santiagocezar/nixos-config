@@ -1,4 +1,4 @@
-{ self, ... }: {
+{ inputs, ... }: {
   _all.nixos = { pkgs, ... }: {
     environment.systemPackages = with pkgs; [
       cachix
@@ -15,7 +15,7 @@
       sops
       unrar
       usbutils
-      self.packages.${pkgs.system}.yup
+      inputs.self.packages.${pkgs.system}.yup
     ];
     programs.fish.enable = true;
   };
@@ -85,5 +85,8 @@
     programs.nix-ld.enable = true;
     programs.kdeconnect.enable = true;
     hardware.graphics.enable32Bit = true;
+  };
+  _pc.home = {
+    services.syncthing.enable = true;
   };
 }

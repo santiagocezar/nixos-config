@@ -1,6 +1,6 @@
-{ ags, ... }: {
+{ inputs, ... }: {
   e102.home = { config, pkgs, ... }: {
-    home.packages = [ ags.packages.${pkgs.system}.default ];
+    home.packages = [ inputs.ags.packages.${pkgs.system}.default ];
 
     start-with-niri = ["ags"];
 
@@ -12,7 +12,7 @@
         Requisite = ["graphical-session.target"];
       };
       Service = {
-        ExecStart = "${ags.packages.${pkgs.system}.default}/bin/ags";
+        ExecStart = "${inputs.ags.packages.${pkgs.system}.default}/bin/ags";
         Restart = "on-failure";
       };
     };

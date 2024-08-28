@@ -1,6 +1,6 @@
-{ nix-index-database, ... }: {
+{ inputs, ... }: {
   _all.nixos = {
-    imports = [ nix-index-database.nixosModules.nix-index ];
+    imports = [ inputs.nix-index-database.nixosModules.nix-index ];
 
     # Allow unfree packages
     nixpkgs.config.allowUnfree = true;
@@ -26,7 +26,7 @@
             dejavu_fonts
           ];
         };
-        staruml = final.callPackage ../resources/staruml.nix {};
+        staruml = final.callPackage ./staruml.nix {};
         /* prev.staruml.overrideAttrs (oldAttrs: {
           nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [
             final.asar

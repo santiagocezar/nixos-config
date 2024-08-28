@@ -23,7 +23,7 @@
   };
 
   e123.nixos = { config, pkgs, ... }: {
-    imports = [ ../resources/generated/e123_hardware.nix ];
+    imports = [ ./gen/e123_hardware.nix ];
 
     boot.extraModulePackages = [ config.boot.kernelPackages.ddcci-driver ];
     boot.kernelModules = [ "i2c-dev" "ddcci_backlight" "v4l2loopback" ];
@@ -40,8 +40,9 @@
     hardware.opentabletdriver.enable = true;
   };
   e102.nixos = {
-    imports = [ ../resources/generated/e102_hardware.nix ];
+    imports = [ ./gen/e102_hardware.nix ];
 
+	services.power-profiles-daemon.enable = false;
 	services.tlp.enable = true;
 
     # Turn media keys into text cursor movement keys
@@ -54,7 +55,7 @@
     '';
   };
   e1001.nixos = { pkgs, ... }: {
-    imports = [ ../resources/generated/e1001_hardware.nix ];
+    imports = [ ./gen/e1001_hardware.nix ];
     boot.extraModprobeConfig = ''
       options rtl8723be ips=0 fwlps=0 # stable wifi hopefully
     '';

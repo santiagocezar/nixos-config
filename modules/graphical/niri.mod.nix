@@ -1,8 +1,8 @@
 # mosty stolen from https://github.com/sodiboo/nix-config/blob/main/niri.mod.nix hehe
 
-{ niri, ... }: {
+{ inputs, ... }: {
   e102.nixos = { pkgs, ... }: {
-    imports = [ niri.nixosModules.niri ];
+    imports = [ inputs.niri.nixosModules.niri ];
 
     programs.niri.enable = true;
     programs.niri.package = pkgs.niri;
@@ -21,9 +21,9 @@
       brightnessctl
     ];
   };
-  e102.home = { config, lib, pkgs, inputs,  ... }:
+  e102.home = { config, lib, pkgs,  ... }:
     {
-      imports = [ niri.homeModules.niri ];
+      imports = [ inputs.niri.homeModules.niri ];
 
       options = {
         start-with-niri = lib.mkOption {
@@ -70,7 +70,7 @@
 
           binds = with config.lib.niri.actions; let
             sh = spawn "sh" "-c";
-            binds = import ../utils/niri-binds.nix lib;
+            binds = import ../../utils/niri-binds.nix lib;
           in
             lib.attrsets.mergeAttrsList [
               {

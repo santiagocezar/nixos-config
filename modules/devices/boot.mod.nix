@@ -1,4 +1,4 @@
-{ lanzaboote, ... }: {
+{ inputs, ... }: {
   _pc.nixos = {
     boot = {
       plymouth.enable = true;
@@ -14,7 +14,7 @@
   };
 
   e123.nixos = { pkgs, lib, ... }: {
-    imports = [ lanzaboote.nixosModules.lanzaboote ];
+    imports = [ inputs.lanzaboote.nixosModules.lanzaboote ];
 
     # Lanzaboote currently replaces the systemd-boot module.
     # This setting is usually set to true in configuration.nix

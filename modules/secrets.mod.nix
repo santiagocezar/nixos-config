@@ -1,11 +1,11 @@
-{ sops-nix, ... }: {
+{ inputs, ... }: {
   _all.nixos = {
   
     imports = [
-      sops-nix.nixosModules.sops
+      inputs.sops-nix.nixosModules.sops
     ];
     
-    sops.defaultSopsFile = ../resources/secrets.yaml;
+    sops.defaultSopsFile = ./secrets.yaml;
 
     sops.age.keyFile = "/home/santi/.config/sops/age/keys.txt";
   };
