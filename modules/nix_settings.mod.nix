@@ -1,5 +1,5 @@
 { inputs, ... }: {
-  _all.nixos = { pkgs, ... } {
+  _all.nixos = { pkgs, ... }: {
     nix = {
       package = pkgs.lix;
       settings = {
