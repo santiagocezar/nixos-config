@@ -7,8 +7,6 @@
       papirus-icon-theme
     ];
 
-    start-with-niri = ["swaybg"];
-
     systemd.user.services."swaybg" = {
       Unit = {
         Description = "wallpaper thing";
