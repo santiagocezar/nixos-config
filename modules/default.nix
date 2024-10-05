@@ -1,7 +1,7 @@
 { inputs }:
 
 let
-  inherit (inputs) nixpkgs nixpkgs-older home-manager;
+  inherit (inputs) nixpkgs home-manager;
   merge = import ../utils/merge.nix nixpkgs.lib;
   merged = merge.fromDirectory ./. inputs;
 in
@@ -10,7 +10,10 @@ in
       nixpkgs.lib.nixosSystem {
         system = config.system;
         specialArgs = {
-          oldPkgs = nixpkgs-older.legacyPackages.${config.system};
+          smallPkgs = import inputs.nixpkgs-small {
+            inherit (config) system;
+            config.allowUnfree = true;
+          };
         };
         modules = config.nixos ++ [
           {

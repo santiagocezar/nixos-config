@@ -19,7 +19,7 @@
     ];
     programs.fish.enable = true;
   };
-  _pc.nixos = { pkgs, ... }: {
+  _pc.nixos = { pkgs, smallPkgs, ... }: {
     environment.systemPackages = with pkgs; [
       # Apps
       bottles
