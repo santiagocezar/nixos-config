@@ -22,52 +22,53 @@
   _pc.nixos = { pkgs, smallPkgs, ... }: {
     environment.systemPackages = with pkgs; [
       # Apps
-      bottles
-      dolphin-emu
-      drawio
-      filezilla
-      gimp
-      google-chrome
-      inkscape
+      # arduino
+      # bottles
+      # dolphin-emu
+      # drawio
+      # filezilla
+      # gimp
+      # google-chrome
+      # inkscape
       kdePackages.kate
-      kdePackages.kdenlive
-      krita
+      # kdePackages.kdenlive
+      # krita
       libqalculate
-      libreoffice
-      obsidian
-      obs-studio
+      # libreoffice
+      # obsidian
+      # obs-studio
       octaveFull
       qalculate-qt
-      qbittorrent
+      # qbittorrent
       scrcpy
-      spotify
+      # spotify
       staruml
       thunderbird
-      vesktop
+      # vesktop
       vlc
-      xournalpp
+      # xournalpp
 
       # Development
       flatpak-builder
       gh
-      godot_4
+      # godot_4
       just
       nodePackages.pnpm
       nodejs
       poetry
-      pcsx2
+      # pcsx2
       python3
-      vscode.fhs
+      # vscode.fhs
 
       # Games
       gamescope
-      gzdoom
+      # gzdoom
       mangohud
-      osu-lazer-bin
-      prismlauncher
-      ringracers
-      srb2
-      srb2kart
+      # osu-lazer-bin
+      # prismlauncher
+      # ringracers
+      # srb2
+      # srb2kart
 
       # Utilities
       evtest
