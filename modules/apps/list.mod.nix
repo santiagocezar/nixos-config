@@ -85,6 +85,7 @@
     programs.nix-ld.enable = true;
     programs.kdeconnect.enable = true;
     hardware.graphics.enable32Bit = true;
+    services.onedrive.enable = true;
   };
   _pc.home = {
     services.syncthing.enable = true;
