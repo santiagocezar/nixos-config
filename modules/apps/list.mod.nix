@@ -37,12 +37,12 @@
       # libreoffice
       # obsidian
       # obs-studio
-      octaveFull
+      # octaveFull
       qalculate-qt
       # qbittorrent
       scrcpy
       # spotify
-      staruml
+      # staruml
       thunderbird
       # vesktop
       vlc

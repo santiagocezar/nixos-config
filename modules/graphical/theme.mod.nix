@@ -1,5 +1,5 @@
 {
-  e102.home = { pkgs, ... }: {
+  _pc.home = { pkgs, ... }: {
     # qt.enable = true;
     # qt.platformTheme.name = "qtct";
 
@@ -15,7 +15,7 @@
         Requisite = ["graphical-session.target"];
       };
       Service = {
-        ExecStart = "${pkgs.swaybg}/bin/swaybg -m fill -i /home/santi/Imágenes/Wallpapers/Joypolis.png";
+        ExecStart = "${pkgs.swaybg}/bin/swaybg -m fill -i /home/santi/Imágenes/Wallpapers/miku-tv-2.jpg";
         Restart = "on-failure";
       };
     };

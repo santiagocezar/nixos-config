@@ -1,5 +1,5 @@
 {
-  e102.nixos = { pkgs, ... }: {
+  _pc.nixos = { pkgs, ... }: {
     environment.systemPackages = with pkgs; [
         slurp
         wl-clipboard
@@ -21,7 +21,7 @@
         wrapperFeatures.gtk = true;
     };
   };
-  e102.home = {
+  _pc.home = {
     wayland.windowManager.sway = {
       enable = true;
       package = null;
