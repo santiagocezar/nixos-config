@@ -1,9 +1,12 @@
 {
   _pc.nixos = { pkgs, ... }: {
-
     # Enable the X11 windowing system.
     services.xserver.enable = true;
 
+	# temp workaround https://github.com/NixOS/nixpkgs/issues/357152
+	environment.variables.MESA_DISK_CACHE_MULTI_FILE = "1";
+    services.xserver.displayManager.importedVariables = [ "MESA_DISK_CACHE_MULTI_FILE" ];
+    
     # Enable the KDE Plasma Desktop Environment.
     services.displayManager.sddm.enable = true;
     services.desktopManager.plasma6.enable = true;

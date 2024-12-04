@@ -1,5 +1,6 @@
 {
-  _pc.nixos = { pkgs, ... }: {
+/*
+  e102.nixos = { pkgs, ... }: {
     environment.systemPackages = with pkgs; [
         slurp
         wl-clipboard
@@ -32,4 +33,5 @@
       };
     };
   };
+*/
 }

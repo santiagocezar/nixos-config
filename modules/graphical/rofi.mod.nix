@@ -1,5 +1,6 @@
 # Rofi configs based on https://github.com/adi1090x/rofi
 {
+/*
   e102.nixos = { pkgs, ... }: {
     fonts.packages = with pkgs; [
       material-symbols
@@ -12,4 +13,5 @@
       source = ./rofi-config;
     };
   };
+*/
 }

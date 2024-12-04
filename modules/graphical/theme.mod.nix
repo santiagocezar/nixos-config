@@ -1,5 +1,6 @@
 {
-  _pc.home = { pkgs, ... }: {
+/*
+  e102.home = { pkgs, ... }: {
     # qt.enable = true;
     # qt.platformTheme.name = "qtct";
 
@@ -20,4 +21,5 @@
       };
     };
   };
+*/
 }

@@ -9,12 +9,6 @@ in
     nixosConfigurations = builtins.mapAttrs (host: config:
       nixpkgs.lib.nixosSystem {
         system = config.system;
-        specialArgs = {
-          smallPkgs = import inputs.nixpkgs-small {
-            inherit (config) system;
-            config.allowUnfree = true;
-          };
-        };
         modules = config.nixos ++ [
           {
             networking.hostName = host;

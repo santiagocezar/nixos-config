@@ -10,6 +10,7 @@
       ncdu
       neofetch
       nix-index
+      nix-output-monitor
       p7zip
       ripgrep
       sops
@@ -19,7 +20,7 @@
     ];
     programs.fish.enable = true;
   };
-  _pc.nixos = { pkgs, smallPkgs, ... }: {
+  _pc.nixos = { pkgs, ... }: {
     environment.systemPackages = with pkgs; [
       # Apps
       # arduino

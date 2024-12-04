@@ -39,8 +39,10 @@
 
     hardware.opentabletdriver.enable = true;
   };
-  e102.nixos = {
+  e102.nixos = { pkgs, ... }: {
     imports = [ ./gen/e102_hardware.nix ];
+
+    boot.kernelPackages = pkgs.linuxPackages_6_11;
 
 	services.power-profiles-daemon.enable = false;
 	services.tlp.enable = true;
