@@ -9,6 +9,7 @@
       micro
       ncdu
       neofetch
+      nh
       nix-index
       nix-output-monitor
       p7zip

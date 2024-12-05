@@ -1,7 +1,7 @@
-diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index c088890..e84e327 100755
---- a/src/CMakeLists.txt
-+++ b/src/CMakeLists.txt
+diff --git a/plasma/plasmoids/src/sevenstart_src/src/CMakeLists.txt b/plasma/plasmoids/src/sevenstart_src/src/CMakeLists.txt
+index c088890..9c857a0 100755
+--- a/plasma/plasmoids/src/sevenstart_src/src/CMakeLists.txt
++++ b/plasma/plasmoids/src/sevenstart_src/src/CMakeLists.txt
 @@ -14,7 +14,7 @@ target_link_libraries(io.gitgud.wackyideas.SevenStart
                        Qt6::Quick
                        KF6::I18n
@@ -11,7 +11,7 @@ index c088890..e84e327 100755
                        PlasmaQuick
                        KF6::Svg
                        KF6::ConfigCore
-@@ -23,7 +23,6 @@ target_link_libraries(io.gitgud.wackyideas.SevenStart
+@@ -23,9 +23,8 @@ target_link_libraries(io.gitgud.wackyideas.SevenStart
  
  
  #target_link_libraries(plasma_applet_seventasks KF5::WindowSystem)
@@ -19,3 +19,6 @@ index c088890..e84e327 100755
  
  install(TARGETS io.gitgud.wackyideas.SevenStart DESTINATION ${KDE_INSTALL_PLUGINDIR}/plasma/applets)
  
+ 
+-#plasma_install_package(package io.gitgud.wackyideas.SevenStart)
++plasma_install_package(package io.gitgud.wackyideas.SevenStart)

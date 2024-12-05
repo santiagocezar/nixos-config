@@ -1,5 +1,5 @@
 {
-  e123.nixos = { pkgs, lib, ... }: 
+  _pc.nixos = { pkgs, lib, ... }:
   let aerotheme = pkgs.fetchgit {
     url = "https://gitgud.io/wackyideas/aerothemeplasma";
     rev = "42455c4640e9a4fa45cb141153ef84d7ff688fff";
