@@ -1,9 +1,19 @@
-{ aerotheme, stdenv, qt6, cmake, pkg-config, kdePackages, extra-cmake-modules }:
+{
+  src,
+  stdenv,
+  qt6,
+  cmake,
+  pkg-config,
+  kdePackages,
+  extra-cmake-modules,
+}:
 
 stdenv.mkDerivation (final: {
   pname = "sevenstart";
   version = "0.0.0";
-  
+  inherit src;
+
+  # awful hack
   postUnpack = ''
     cd ${final.src.name}
     patch -p1 < ${./sevenstart.patch}
@@ -20,6 +30,5 @@ stdenv.mkDerivation (final: {
   buildInputs = [
     kdePackages.libplasma
   ];
-  
-  src = aerotheme;
+
 })
