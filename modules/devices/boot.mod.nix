@@ -2,7 +2,6 @@
   _pc.nixos = {
     boot = {
       plymouth.enable = true;
-      plymouth.theme = "bgrt";
     };
   };
   _all.nixos = {

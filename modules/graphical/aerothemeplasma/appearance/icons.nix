@@ -12,12 +12,12 @@ stdenvNoCC.mkDerivation {
   version = "0.0.0";
 
   src = "${src}/misc/icons";
-
+/*
   propagatedBuildInputs = [
     breeze-icons
     oxygen-icons5
     hicolor-icon-theme
-  ];
+  ];*/
 
   dontDropIconThemeCache = true;
 

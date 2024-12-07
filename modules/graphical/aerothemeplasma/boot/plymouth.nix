@@ -8,6 +8,12 @@ stdenv.mkDerivation (final: {
   postUnpack = ''
     rm -rf plymouth-theme-smod/build
   '';
+  
+  patches = [
+    ./plymouth.patch
+  ];
+  
+  cmakeFlags = [ "-DPLYMOUTH_THEME_INSTALL_DIR=share/plymouth/themes/" ];
 
   nativeBuildInputs = [
     cmake
