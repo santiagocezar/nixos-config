@@ -1,19 +1,56 @@
 {
   _all.home = {
-    programs.fish = {
+    programs.nushell = {
       enable = true;
-      shellInit = ''
-        function fish_user_key_bindings
-          bind \e\[3\;5~ kill-word
-          bind \b backward-kill-word
-          #bind \cC strike_cancel
-        end
+      extraConfig = ''
+        $env.config = {
+          show_banner: false
+          keybindings: [
+            {
+              name: jump_left
+              modifier: CONTROL
+              keycode: left
+              mode: emacs
+              event: [
+                { edit: movewordleft }
+              ]
+            }
+            {
+              name: jump_right
+              modifier: CONTROL
+              keycode: right
+              mode: emacs
+              event: [
+                { edit: movewordright }
+              ]
+            }
+            {
+              name: backspace_word
+              modifier: CONTROL
+              keycode: backspace
+              mode: emacs
+              event: [
+                { edit: backspaceword }
+              ]
+            }
+            {
+              name: delete_word
+              modifier: CONTROL
+              keycode: delete
+              mode: emacs
+              event: [
+                { edit: deleteword }
+              ]
+            }
+          ]
+        }
       '';
       shellAliases = {
         j = "just";
       };
     };
-    programs.starship.enable = true;
+    programs.carapace.enable = true;
+    programs.carapace.enableNushellIntegration = true;
     programs.zoxide.enable = true;
     programs.direnv.enable = true;
   };

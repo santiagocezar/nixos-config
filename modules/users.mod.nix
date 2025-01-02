@@ -5,7 +5,7 @@
       description = "Santi";
       extraGroups = [ "networkmanager" "dialout" "wheel" "libvirtd" "media" ];
       initialPassword = "cambiar";
-      shell = pkgs.fish;
+      shell = pkgs.nushell;
     };
   };
 
