@@ -27,7 +27,7 @@
             {
               name: backspace_word
               modifier: CONTROL
-              keycode: backspace
+              keycode: char_h
               mode: emacs
               event: [
                 { edit: backspaceword }
@@ -53,5 +53,6 @@
     programs.carapace.enableNushellIntegration = true;
     programs.zoxide.enable = true;
     programs.direnv.enable = true;
+    programs.navi.enable = true;
   };
 }
