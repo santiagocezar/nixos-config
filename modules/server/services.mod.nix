@@ -17,10 +17,6 @@
       enable = true;
       rpcSecretFile = "/run/secrets/aria2-rpc-token.txt";
     };
-    services.jellyfin = {
-      enable = true;
-      openFirewall = true;
-    };
     services.inadyn = {
       enable = true;
       settings.provider."cloudflare.com" = {
@@ -30,10 +26,14 @@
         proxied = true;
       };
     };
-    environment.systemPackages = [
-      pkgs.jellyfin
-      pkgs.jellyfin-web
-      pkgs.jellyfin-ffmpeg
-    ];
+    # services.jellyfin = {
+    #   enable = true;
+    #   openFirewall = true;
+    # };
+    # environment.systemPackages = [
+    #   pkgs.jellyfin
+    #   pkgs.jellyfin-web
+    #   pkgs.jellyfin-ffmpeg
+    # ];
   };
 }
