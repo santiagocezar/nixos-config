@@ -17,7 +17,6 @@
       sops
       unrar
       usbutils
-      inputs.self.packages.${pkgs.system}.yup
     ];
     programs.fish.enable = true;
   };
