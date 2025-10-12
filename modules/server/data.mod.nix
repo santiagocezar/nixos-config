@@ -1,5 +1,5 @@
 {
-  e1001.nixos = { config, pkgs, ... }: {
+  _srv.nixos = { config, pkgs, ... }: {
     users.groups = {
       media.members = [
         "jellyfin"

@@ -12,7 +12,7 @@
     };
   };
 
-  e1001.nixos = { config, pkgs, ... }: {
+  _srv.nixos = { config, pkgs, ... }: {
     services.aria2 = {
       enable = true;
       rpcSecretFile = "/run/secrets/aria2-rpc-token.txt";
@@ -26,9 +26,8 @@
       settings.provider."cloudflare.com" = {
         username = "cez.ar";
         include = config.sops.secrets.dns-token.path;
-        hostname = [ "e123.cez.ar" "e1001.cez.ar" "play.cez.ar" ];
-        ttl = 1;
-        proxied = false;
+        hostname = [ "e123.cez.ar" ];
+        proxied = true;
       };
     };
     environment.systemPackages = [

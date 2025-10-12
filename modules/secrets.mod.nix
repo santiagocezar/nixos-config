@@ -9,7 +9,7 @@
 
     sops.age.keyFile = "/home/santi/.config/sops/age/keys.txt";
   };
-  e1001.nixos = {
+  _srv.nixos = {
     sops.secrets."aria2-rpc-token.txt" = {
       mode = "0440";
       group = "aria2";
