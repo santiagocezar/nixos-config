@@ -7,6 +7,7 @@
     
     sops.defaultSopsFile = ./secrets.yaml;
 
+    fileSystems."/home".neededForBoot = true;
     sops.age.keyFile = "/home/santi/.config/sops/age/keys.txt";
   };
   _srv.nixos = {
