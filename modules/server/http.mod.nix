@@ -4,8 +4,8 @@
       enable = true;
       virtualHosts."e123.cez.ar".extraConfig = ''
         handle /aria2/* {
-          root * "${pkgs.ariang}/share/ariang/"
-          file_server
+          root * "${pkgs.ariang}/share/ariang"
+          file_server browse
         }
         handle /aria2rpc {
           reverse_proxy :6800/jsonrpc
