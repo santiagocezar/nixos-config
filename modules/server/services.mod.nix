@@ -42,7 +42,7 @@
           omitPasswordAuth = true;
           port = 8080;
           settings.allow_anonymous = true;
-          settings.protocol = "websockets;
+          settings.protocol = "websockets";
         }
       ];
     };
