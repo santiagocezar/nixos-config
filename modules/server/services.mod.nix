@@ -37,6 +37,13 @@
           omitPasswordAuth = true;
           settings.allow_anonymous = true;
         }
+        {
+          acl = [ "pattern readwrite #" ];
+          omitPasswordAuth = true;
+          port = 8080;
+          settings.allow_anonymous = true;
+          settings.protocol = "websockets;
+        }
       ];
     };
 
