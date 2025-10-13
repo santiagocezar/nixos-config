@@ -16,6 +16,7 @@
     services.aria2 = {
       enable = true;
       rpcSecretFile = "/run/secrets/aria2-rpc-token.txt";
+      settings.dir = "/var/lib/downloads";
     };
     services.tailscale.enable = true;
     services.inadyn = {
