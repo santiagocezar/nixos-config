@@ -25,10 +25,23 @@
       settings.provider."cloudflare.com" = {
         username = "cez.ar";
         include = config.sops.secrets.dns-token.path;
-        hostname = [ "e123.cez.ar" ];
-        proxied = true;
+        hostname = [ "e123.cez.ar" "public.cez.ar" ];
+        # proxied = true;
       };
     };
+    services.mosquitto = {
+      enable = true;
+      listeners = [
+        {
+          acl = [ "pattern readwrite #" ];
+          omitPasswordAuth = true;
+          settings.allow_anonymous = true;
+        }
+      ];
+    };
+
+    networking.firewall.allowedTCPPorts = [ 1883 ];
+
     # services.jellyfin = {
     #   enable = true;
     #   openFirewall = true;
