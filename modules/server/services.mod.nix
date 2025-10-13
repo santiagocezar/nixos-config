@@ -17,6 +17,7 @@
       enable = true;
       rpcSecretFile = "/run/secrets/aria2-rpc-token.txt";
     };
+    services.tailscale.enable = true;
     services.inadyn = {
       enable = true;
       settings.provider."cloudflare.com" = {
