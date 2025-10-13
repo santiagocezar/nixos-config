@@ -10,7 +10,10 @@
         reverse_proxy /jsonrpc :6800 {
           header_down X-Real-IP {http.request.remote}
         }
-        reverse_proxy /mqtt :8080
+
+        handle_path /mqtt {
+          reverse_proxy :8080
+        }
       '';
     };
     networking.firewall.allowedTCPPorts = [
