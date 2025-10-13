@@ -7,7 +7,7 @@
           root * "${pkgs.ariang}/share/ariang"
           file_server browse
         }
-        reverse_proxy /jsonrpc :6800/jsonrpc {
+        reverse_proxy /jsonrpc :6800 {
           header_down X-Real-IP {http.request.remote}
         }
       '';
