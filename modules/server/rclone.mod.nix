@@ -12,7 +12,7 @@
             ${pkgs.rclone}/bin/rclone \
                 --config ${rcloneCfg} \
                 --onedrive-token "$(cat ${config.sops.secrets.ms-token.path})" \
-                sync 
+                sync \
                     /var/lib/syncthing --include '/{utn,notas,plani}/**' \
                 onedrive:e123/
         '';
@@ -26,7 +26,7 @@
                     Restart = "on-failure";
                     User = config.services.syncthing.user;
                     Group = config.services.syncthing.group;
-                    ExecStart = "${syncScript}";
+                    Exec = "${syncScript}";
                 };
             };
         };
