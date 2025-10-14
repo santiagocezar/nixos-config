@@ -23,5 +23,9 @@
       mode = "0440";
       group = "syncthing";
     };
+    sops.secrets."ms-token" = {
+      mode = "0440";
+      group = "syncthing";
+    };
   };
 }
