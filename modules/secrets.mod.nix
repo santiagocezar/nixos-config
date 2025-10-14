@@ -19,5 +19,9 @@
       mode = "0440";
       group = "inadyn";
     };
+    sops.secrets."syncthing-password" = {
+      mode = "0440";
+      group = "syncthing";
+    };
   };
 }

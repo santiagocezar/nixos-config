@@ -49,6 +49,43 @@
 
     networking.firewall.allowedTCPPorts = [ 1883 ];
 
+    services.syncthing = {
+      enable = true;
+      openDefaultPorts = true;
+      settings = {
+        guiPasswordFile = config.sops.secrets.syncthing-password.path;
+        devices = {
+          "adachi00" = {
+            addresses = [
+              "tcp://100.95.116.94"
+              "quic://100.95.116.94"
+              "tcp://192.168.0.16"
+              "quic://192.168.0.16"
+              "dynamic"
+            ];
+            id = "IXMXMSD-FIJB23F-527Z6DA-WSSMA2O-IUP2AXR-M42DSEW-GIXYX35-6QC77QY";
+            introducer = true;
+          };
+          "motobug42" = {
+            addresses = [
+              "tcp://100.120.237.63"
+              "quic://100.120.237.63"
+              "tcp://192.168.0.4"
+              "quic://192.168.0.4"
+              "dynamic"
+            ];
+            id = "AZGNX5Q-VIBGOFP-GJZFYMA-I7EFT7T-EM7FX4X-OXVXMRW-G4PLZ3Z-SCSSRAS";
+            introducer = true;
+          };
+        };
+        folders = {
+          "utn".devices = [ "adachi00" "motobug42" ];
+          "plani".devices = [ "adachi00" "motobug42" ];
+          "notas".devices = [ "adachi00" "motobug42" ];
+        };
+      };
+    };
+
     # services.jellyfin = {
     #   enable = true;
     #   openFirewall = true;
