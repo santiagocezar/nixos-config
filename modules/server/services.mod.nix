@@ -79,9 +79,18 @@
           };
         };
         folders = {
-          "utn".devices = [ "adachi00" "motobug42" ];
-          "plani".devices = [ "adachi00" "motobug42" ];
-          "notas".devices = [ "adachi00" "motobug42" ];
+          "utn" = {
+            path = "~/utn";
+            devices = [ "adachi00" "motobug42" ];
+          };
+          "plani" = {
+            path = "~/plani";
+            devices = [ "adachi00" "motobug42" ];
+          };
+          "notas" = {
+            path = "~/notas";
+            devices = [ "adachi00" "motobug42" ];
+          };
         };
       };
     };
