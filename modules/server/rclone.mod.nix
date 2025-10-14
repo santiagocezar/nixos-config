@@ -21,7 +21,6 @@
     in
         {
             systemd.services.rclone-to-onedrive =  {
-                enabled = true;
                 description = "Sync through RClone to OneDrive";
                 wants = [ "network-online.target" ];
                 serviceConfig = {
