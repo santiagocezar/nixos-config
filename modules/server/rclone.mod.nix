@@ -1,5 +1,5 @@
 {
-  e1001.nixos = { config, pkgs, ... }: 
+  _srv.nixos = { config, pkgs, ... }: 
     let 
         rcloneCfg = pkgs.writeText "rclone.conf" ''
             [onedrive]
@@ -21,6 +21,7 @@
     in
         {
             systemd.services.rclone-to-onedrive =  {
+                enabled = true;
                 description = "Sync through RClone to OneDrive";
                 wants = [ "network-online.target" ];
                 serviceConfig = {
