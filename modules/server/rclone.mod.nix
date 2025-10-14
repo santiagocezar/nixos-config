@@ -26,7 +26,7 @@
                     Restart = "on-failure";
                     User = config.services.syncthing.user;
                     Group = config.services.syncthing.group;
-                    Exec = "${syncScript}";
+                    ExecStart = "${syncScript}";
                 };
             };
         };
