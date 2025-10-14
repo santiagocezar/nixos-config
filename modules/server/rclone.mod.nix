@@ -30,6 +30,6 @@
                     Group = config.services.syncthing.group;
                     ExecStart = "${syncScript}";
                 };
-            }
+            };
         };
     }
