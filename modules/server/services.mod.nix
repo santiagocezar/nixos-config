@@ -4,7 +4,7 @@
       enable = true;
       settings.PasswordAuthentication = false;
     };
-    environment.systemPackages = [ ghostty.terminfo ];
+    environment.systemPackages = [ pkgs.ghostty.terminfo ];
     services.fail2ban = {
       enable = true;
       ignoreIP = [
