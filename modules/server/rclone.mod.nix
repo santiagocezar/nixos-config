@@ -12,8 +12,10 @@
             ${pkgs.rclone}/bin/rclone \
                 --config ${rcloneCfg} \
                 --onedrive-token "$(cat ${config.sops.secrets.ms-token.path})" \
-                sync \
-                    /var/lib/syncthing --include '/{utn,notas,plani}/**' \
+                sync /var/lib/syncthing \
+                    --include '/{utn,notas,plani}/**' \
+                    --exclude '.stfolder*/**' \
+                    --exclude '.obsidian/**' \
                 onedrive:e123/
         '';
     in
