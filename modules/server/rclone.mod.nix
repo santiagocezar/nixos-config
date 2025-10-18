@@ -31,5 +31,16 @@
                     ExecStart = "${syncScript}";
                 };
             };
+            systemd.timers.rclone-to-onedrive = {
+                wantedBy = [ "timers.target" ];
+                timerConfig = {
+                    OnBootSec = "5m";
+                    OnCalendar = "11:30";
+                    RandomizedDelaySec = 3600;
+                    Persistent = true;
+                    Unit = config.systemd.services.rclone-to-onedrive.name;
+                };
+            };
+
         };
     }
