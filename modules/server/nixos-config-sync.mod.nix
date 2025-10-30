@@ -5,7 +5,6 @@
       repoRemotePath = "/etc/nixos";
     in
       {
-        a
         users.groups."mirrormirror" = {};
         users.users."mirrormirror" = {
           group = "mirrormirror";
