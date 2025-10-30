@@ -7,8 +7,8 @@
         export GIT_SSH_COMMAND='ssh -i ${config.sops.secrets.ssh-key.path}'
         git --git-dir ${gitDir} push --mirror origin
       '';
-      syncService = config.systemd.services.nixos-config-sync.name
-      refreshService = config.systemd.services.nixos-config-refresh.name
+      syncService = config.systemd.services.nixos-config-sync.name;
+      refreshService = config.systemd.services.nixos-config-refresh.name;
     in
       {
         security.sudo.extraRules = [{
