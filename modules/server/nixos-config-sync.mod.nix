@@ -28,6 +28,7 @@
             gitMinimal
             config.nix.package.out
             config.programs.ssh.package
+            config.system.build.nixos-rebuild
           ];
           serviceConfig = {
             Type = "oneshot";
@@ -49,6 +50,7 @@
             gitMinimal
             config.nix.package.out
             config.programs.ssh.package
+            config.system.build.nixos-rebuild
           ];
           serviceConfig = {
             Type = "oneshot";
