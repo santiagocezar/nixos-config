@@ -30,7 +30,11 @@
             User = "mirrormirror";
             ExecStart = pkgs.writeShellScript "nixos-config-sync.sh" ''
               #!/bin/sh
-              export GIT_SSH_COMMAND='${pkgs.openssh}/bin/ssh -i ${config.sops.secrets.ms-token.path}'
+              set -eux
+              
+              sudo nixos-rebuild switch --refresh --flake git+file:///etc/nixos
+
+              export GIT_SSH_COMMAND='${pkgs.openssh}/bin/ssh -i ${config.sops.secrets.ssh-key.path}'
               ${pkgs.git}/bin/git --git-dir ${gitDir} push --mirror origin
             '';
           };
