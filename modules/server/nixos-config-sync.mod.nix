@@ -1,7 +1,7 @@
 {
   _srv.nixos = { config, pkgs, ... }: 
     let 
-      repoPath = "/etc/nixos";
+      gitDir = "/etc/nixos";
       repoRemotePath = "/etc/nixos";
     in
       {
@@ -28,11 +28,10 @@
             Type = "oneshot";
             Restart = "on-failure";
             User = "mirrormirror";
-            WorkingDirectory = repoPath;
             ExecStart = pkgs.writeShellScript "nixos-config-sync.sh" ''
               #!/bin/sh
               export GIT_SSH_COMMAND='${pkgs.openssh}/bin/ssh -i ${config.sops.secrets.ms-token.path}'
-              ${pkgs.git}/bin/git push --mirror mirror
+              ${pkgs.git}/bin/git --git-dir ${repoPath} push --mirror mirror
             '';
           };
         };
