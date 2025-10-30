@@ -31,7 +31,7 @@
             ExecStart = pkgs.writeShellScript "nixos-config-sync.sh" ''
               #!/bin/sh
               export GIT_SSH_COMMAND='${pkgs.openssh}/bin/ssh -i ${config.sops.secrets.ms-token.path}'
-              ${pkgs.git}/bin/git --git-dir ${gitDir} push --mirror mirror
+              ${pkgs.git}/bin/git --git-dir ${gitDir} push --mirror origin
             '';
           };
         };
