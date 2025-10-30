@@ -32,7 +32,6 @@
           ];
           serviceConfig = {
             Type = "oneshot";
-            Restart = "on-failure";
             ExecStart = pkgs.writeShellScript "nixos-config-sync.sh" ''
               set -eux
 
@@ -54,7 +53,6 @@
           ];
           serviceConfig = {
             Type = "oneshot";
-            Restart = "on-failure";
             ExecStart = pkgs.writeShellScript "nixos-config-refresh.sh" ''
               set -eux
 
