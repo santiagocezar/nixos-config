@@ -14,7 +14,7 @@
         security.sudo.extraRules = [{
           commands = [
             {
-              command = "systemctl start ${config.systemd.services.nixos-config-sync.name}";
+              command = "/run/current-system/sw/bin/systemctl start ${config.systemd.services.nixos-config-sync.name}";
               options = [ "NOPASSWD" ];
             }
           ];
