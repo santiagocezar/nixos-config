@@ -27,5 +27,13 @@
       mode = "0440";
       group = "syncthing";
     };
+    sops.secrets."ssh-key" = {
+      mode = "0440";
+      group = "mirrormirror";
+    };
+    sops.secrets."ssh-pub" = {
+      mode = "0440";
+      group = "mirrormirror";
+    };
   };
 }
