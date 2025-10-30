@@ -28,10 +28,10 @@
       group = "syncthing";
     };
     sops.secrets."ssh-key" = {
-      mode = "0440";
+      mode = "0400";
     };
     sops.secrets."ssh-pub" = {
-      mode = "0440";
+      mode = "0400";
     };
   };
 }

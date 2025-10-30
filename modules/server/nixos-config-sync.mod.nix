@@ -44,21 +44,17 @@
 
         systemd.services.nixos-config-refresh =  {
           description = "Refresh NixOS config and sync to GitHub";
-          wants = [ "network-online.target" ];
+          before = syncService;
+          wants = [ "network-online.target" syncService ];
           path = with pkgs; [
-            gitMinimal
             config.nix.package.out
-            config.programs.ssh.package
-            config.system.build.nixos-rebuild
           ];
           serviceConfig = {
             Type = "oneshot";
             ExecStart = pkgs.writeShellScript "nixos-config-refresh.sh" ''
               set -eux
 
-              nixos-rebuild switch --refresh --recreate-lock-file --commit-lock-file --flake git+file://${gitDir}
-
-              ${mirror}
+              # todo
             '';
           };
         };
