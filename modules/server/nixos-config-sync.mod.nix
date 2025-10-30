@@ -44,7 +44,7 @@
 
         systemd.services.nixos-config-refresh =  {
           description = "Refresh NixOS config and sync to GitHub";
-          before = syncService;
+          before = [ syncService ];
           wants = [ "network-online.target" syncService ];
           path = with pkgs; [
             config.nix.package.out
