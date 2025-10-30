@@ -3,18 +3,18 @@
     let 
       gitDir = "/etc/nixos";
       repoRemotePath = "/etc/nixos";
+      mirror = pkgs.writeShellScript "mirror-config.sh" ''
+        export GIT_SSH_COMMAND='ssh -i ${config.sops.secrets.ssh-key.path}'
+        git --git-dir ${gitDir} push --mirror origin
+      '';
+      syncService = config.systemd.services.nixos-config-sync.name
+      refreshService = config.systemd.services.nixos-config-refresh.name
     in
       {
-        users.groups."mirrormirror" = {};
-        users.users."mirrormirror" = {
-          group = "mirrormirror";
-          isSystemUser = true;
-        };
-        
         security.sudo.extraRules = [{
           commands = [
             {
-              command = "/run/current-system/sw/bin/systemctl start ${config.systemd.services.nixos-config-sync.name}";
+              command = "/run/current-system/sw/bin/systemctl start ${syncService}";
               options = [ "NOPASSWD" ];
             }
           ];
@@ -24,19 +24,51 @@
         systemd.services.nixos-config-sync =  {
           description = "Sync NixOS config to GitHub";
           wants = [ "network-online.target" ];
+          path = with pkgs; [
+            gitMinimal
+            config.nix.package.out
+            config.programs.ssh.package
+          ];
           serviceConfig = {
             Type = "oneshot";
             Restart = "on-failure";
-            User = "mirrormirror";
             ExecStart = pkgs.writeShellScript "nixos-config-sync.sh" ''
-              #!/bin/sh
               set -eux
-              
-              sudo nixos-rebuild switch --refresh --flake git+file:///etc/nixos
 
-              export GIT_SSH_COMMAND='${pkgs.openssh}/bin/ssh -i ${config.sops.secrets.ssh-key.path}'
-              ${pkgs.git}/bin/git --git-dir ${gitDir} push --mirror origin
+              nixos-rebuild switch --refresh --flake git+file://${gitDir}
+
+              ${mirror}
             '';
+          };
+        };
+
+        systemd.services.nixos-config-refresh =  {
+          description = "Refresh NixOS config and sync to GitHub";
+          wants = [ "network-online.target" ];
+          path = with pkgs; [
+            gitMinimal
+            config.nix.package.out
+            config.programs.ssh.package
+          ];
+          serviceConfig = {
+            Type = "oneshot";
+            Restart = "on-failure";
+            ExecStart = pkgs.writeShellScript "nixos-config-refresh.sh" ''
+              set -eux
+
+              nixos-rebuild switch --refresh --recreate-lock-file --commit-lock-file --flake git+file://${gitDir}
+
+              ${mirror}
+            '';
+          };
+        };
+
+        systemd.timers.nixos-config-refresh = {
+          wantedBy = [ "timers.target" ];
+          timerConfig = {
+            OnCalendar = "weekly";
+            Persistent = true;
+            Unit = refreshService;
           };
         };
       };
