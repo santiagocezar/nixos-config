@@ -5,7 +5,11 @@
     repoRemotePath = "/etc/nixos";
   in
     {
-      users.users.mirrormirror = {};
+      users.groups."mirrormirror" = {};
+      users.users."mirrormirror" = {
+        group = "mirrormirror";
+        isSystemUser = true;
+      };
       
       security.sudoextraRules = [{
         commands = [
