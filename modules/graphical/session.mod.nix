@@ -21,7 +21,7 @@
       enable = true;
       extraPortals = with pkgs; [
         xdg-desktop-portal-gtk
-        xdg-desktop-portal-kde
+        kdePackages.xdg-desktop-portal-kde
       ];
     };
 
@@ -40,7 +40,7 @@
 
     # Enable sound with pipewire.
 
-    hardware.pulseaudio.enable = false;
+    services.pulseaudio.enable = false;
 
     security.rtkit.enable = true;
     services.pipewire = {

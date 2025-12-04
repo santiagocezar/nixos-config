@@ -6,7 +6,7 @@
       git
       htop
       jq
-      micro
+      # micro
       ncdu
       neofetch
       nh
@@ -31,6 +31,7 @@
       # gimp
       # google-chrome
       # inkscape
+
       kdePackages.kate
       # kdePackages.kdenlive
       # krita
@@ -52,9 +53,11 @@
       # Development
       flatpak-builder
       gh
+      ghostty
       # godot_4
       just
-      nodePackages.pnpm
+      # nodePackages.pnpm
+      bun
       nodejs
       poetry
       # pcsx2
@@ -75,7 +78,7 @@
       evtest
       gparted
       mediawriter
-      ventoy
+      # ventoy
       wl-clipboard
       xorg.xeyes
     ];
@@ -86,7 +89,7 @@
     programs.nix-ld.enable = true;
     programs.kdeconnect.enable = true;
     hardware.graphics.enable32Bit = true;
-    services.onedrive.enable = true;
+    # services.onedrive.enable = true;
   };
   _pc.home = {
     services.syncthing.enable = true;

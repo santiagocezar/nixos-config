@@ -74,8 +74,13 @@
       ];
     };
   };
+  adachix00.nixos = { pkgs, ... }: {
+    imports = [ ./gen/adachix00_hardware.nix ];
+    hardware.graphics.enable = true;
+  };
 
   e123.system = "x86_64-linux";
   e102.system = "x86_64-linux";
   e1001.system = "x86_64-linux";
+  adachix00.system = "x86_64-linux";
 }

@@ -1,5 +1,5 @@
 { inputs, ... }: {
-  _all.nixos = {
+  e123.nixos = {
   
     imports = [
       inputs.sops-nix.nixosModules.sops
