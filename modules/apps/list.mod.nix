@@ -62,6 +62,7 @@
       poetry
       # pcsx2
       python3
+      zed-editor
       # vscode.fhs
 
       # Games
