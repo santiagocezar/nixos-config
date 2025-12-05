@@ -47,7 +47,7 @@
         }
       '';
       shellAliases = {
-        j = "just";
+        zed = "zeditor";
       };
     };
     programs.carapace.enable = true;
