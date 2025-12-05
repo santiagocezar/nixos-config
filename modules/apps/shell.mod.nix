@@ -3,6 +3,7 @@
     programs.nushell = {
       enable = true;
       extraConfig = ''
+        $env.PATH ++= [ "/home/santi/.bun/bin" ]
         $env.config = {
           show_banner: false
           keybindings: [
