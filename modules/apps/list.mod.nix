@@ -57,6 +57,7 @@
       just
       # nodePackages.pnpm
       bun
+      nil
       nodejs
       poetry
       # pcsx2
