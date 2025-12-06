@@ -1,10 +1,14 @@
-{ inputs, ... }: {
+{ sources, ... }:
+let
+  sops-nix = import sources.sops-nix;
+in
+{
   e123.nixos = {
-  
+
     imports = [
-      inputs.sops-nix.nixosModules.sops
+      sops-nix.nixosModules.sops
     ];
-    
+
     sops.defaultSopsFile = ./secrets.yaml;
 
     fileSystems."/home".neededForBoot = true;

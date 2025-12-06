@@ -1,7 +1,5 @@
-{ inputs, ... }: {
+{ ... }: {
   _all.nixos = {
-    imports = [ inputs.nix-index-database.nixosModules.nix-index ];
-
     # Allow unfree packages
     nixpkgs.config.allowUnfree = true;
 

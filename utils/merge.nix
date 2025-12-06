@@ -58,11 +58,11 @@ rec {
 
 
 
-  fromDirectory = dir: inputs:
+  fromDirectory = dir: ctx:
     let
       normalizeModule = mod:
         if builtins.isFunction mod
-        then mod { inherit inputs final; }
+        then mod (ctx // { inherit final; })
         else mod;
       modules = map normalizeModule (importAll dir);
 

@@ -1,15 +1,17 @@
-{ inputs }:
+{ pkgs, sources }:
 
 let
-  inherit (inputs) nixpkgs home-manager;
-  merge = import ../utils/merge.nix nixpkgs.lib;
-  merged = merge.fromDirectory ./. inputs;
+  inherit (sources) nixpkgs;
+  eval = import "${nixpkgs}/nixos/lib/eval-config.nix";
+  home-manager = import sources.home-manager { inherit pkgs; };
+  merge = import ../utils/merge.nix pkgs.lib;
+  merged = merge.fromDirectory ./. { inherit pkgs sources; };
 in
   {
-    nixosConfigurations = builtins.mapAttrs (host: config:
-      nixpkgs.lib.nixosSystem {
-        system = config.system;
-        modules = config.nixos ++ [
+    nixos = builtins.mapAttrs (host: cfg:
+      eval {
+        system = builtins.currentSystem;
+        modules = cfg.nixos ++ [
           {
             networking.hostName = host;
             system.stateVersion = "23.11";
@@ -19,12 +21,11 @@ in
     ) merged;
 
     # yes, this is using hostnames instead of usernames
-    homeConfigurations = builtins.mapAttrs (host: config:
+    home = builtins.mapAttrs (host: config:
       home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.${config.system};
+        pkgs = import nixpkgs {};
         modules = config.home ++ [
           {
-            # i guess these two have to be hardcoded
             home.username = "santi";
             home.homeDirectory = "/home/santi";
             home.stateVersion = "23.11";

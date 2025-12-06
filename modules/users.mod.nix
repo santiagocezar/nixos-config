@@ -1,4 +1,4 @@
-{ inputs, ... }: {
+{ ... }: {
   _all.nixos = { pkgs, ... }: {
     users.users.santi = {
       isNormalUser = true;
@@ -14,7 +14,6 @@
       isNormalUser = true;
       description = "Flor";
       extraGroups = [ "networkmanager" ];
-      shell = pkgs.fish;
     };
   };
 

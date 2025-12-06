@@ -1,4 +1,4 @@
-{ inputs, ... }: {
+{ ... }: {
   _all.nixos = { pkgs, ... }: {
     environment.systemPackages = with pkgs; [
       cachix
@@ -6,11 +6,11 @@
       git
       htop
       jq
+      lon
       # micro
       ncdu
       neofetch
       nh
-      nix-index
       nix-output-monitor
       p7zip
       ripgrep
@@ -18,7 +18,6 @@
       unrar
       usbutils
     ];
-    programs.fish.enable = true;
   };
   _pc.nixos = { pkgs, ... }: {
     environment.systemPackages = with pkgs; [
