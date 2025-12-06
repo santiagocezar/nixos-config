@@ -1,97 +1,72 @@
-{ ... }: {
-  _all.nixos = { pkgs, ... }: {
-    environment.systemPackages = with pkgs; [
-      cachix
-      file
-      git
-      htop
-      jq
-      lon
-      # micro
-      ncdu
-      neofetch
-      nh
-      nix-output-monitor
-      p7zip
-      ripgrep
-      sops
-      unrar
-      usbutils
-    ];
-  };
-  _pc.nixos = { pkgs, ... }: {
-    environment.systemPackages = with pkgs; [
-      # Apps
-      # arduino
-      # bottles
-      # dolphin-emu
-      # drawio
-      # filezilla
-      # gimp
-      # google-chrome
-      # inkscape
+{ ... }:
+{
+  _all.nixos =
+    { pkgs, ... }:
+    {
+      environment.systemPackages = with pkgs; [
+        cachix
+        file
+        git
+        htop
+        jq
+        lon
+        # micro
+        ncdu
+        neofetch
+        nh
+        nix-output-monitor
+        p7zip
+        ripgrep
+        sops
+        unrar
+        usbutils
+      ];
+    };
+  _pc.nixos =
+    { pkgs, ... }:
+    {
+      environment.systemPackages = with pkgs; [
+        kdePackages.kate
+        libqalculate
+        qalculate-qt
+        scrcpy
+        thunderbird
+        vlc
+        synthingtray
 
-      kdePackages.kate
-      # kdePackages.kdenlive
-      # krita
-      libqalculate
-      # libreoffice
-      # obsidian
-      # obs-studio
-      # octaveFull
-      qalculate-qt
-      # qbittorrent
-      scrcpy
-      # spotify
-      # staruml
-      thunderbird
-      # vesktop
-      vlc
-      # xournalpp
+        # Development
+        flatpak-builder
+        gh
+        ghostty
+        just
+        bun
+        nil
+        nodejs
+        poetry
+        python3
+        zed-editor
+        # vscode.fhs
 
-      # Development
-      flatpak-builder
-      gh
-      ghostty
-      # godot_4
-      just
-      # nodePackages.pnpm
-      bun
-      nil
-      nodejs
-      poetry
-      # pcsx2
-      python3
-      zed-editor
-      # vscode.fhs
+        # Games
+        gamescope
+        mangohud
 
-      # Games
-      gamescope
-      # gzdoom
-      mangohud
-      # osu-lazer-bin
-      # prismlauncher
-      # ringracers
-      # srb2
-      # srb2kart
+        # Utilities
+        evtest
+        gparted
+        mediawriter
+        wl-clipboard
+        xorg.xeyes
+      ];
 
-      # Utilities
-      evtest
-      gparted
-      mediawriter
-      # ventoy
-      wl-clipboard
-      xorg.xeyes
-    ];
-
-    programs.firefox.enable = true;
-    programs.steam.enable = true;
-    programs.direnv.enable = true;
-    programs.nix-ld.enable = true;
-    programs.kdeconnect.enable = true;
-    hardware.graphics.enable32Bit = true;
-    # services.onedrive.enable = true;
-  };
+      programs.firefox.enable = true;
+      programs.steam.enable = true;
+      programs.direnv.enable = true;
+      programs.nix-ld.enable = true;
+      programs.kdeconnect.enable = true;
+      hardware.graphics.enable32Bit = true;
+      # services.onedrive.enable = true;
+    };
   _pc.home = {
     services.syncthing.enable = true;
   };
