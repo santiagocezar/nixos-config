@@ -32,7 +32,7 @@
         scrcpy
         thunderbird
         vlc
-        synthingtray
+        syncthingtray
 
         # Development
         flatpak-builder
