@@ -26,7 +26,6 @@
     { pkgs, ... }:
     {
       environment.systemPackages = with pkgs; [
-        kdePackages.kate
         libqalculate
         qalculate-qt
         scrcpy
@@ -53,7 +52,7 @@
 
         # Utilities
         evtest
-        gparted
+        kdePackages.partitionmanager
         mediawriter
         wl-clipboard
         xorg.xeyes
