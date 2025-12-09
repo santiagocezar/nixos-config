@@ -18,7 +18,7 @@
       # Enable CUPS
       services.printing.enable = true;
       services.printing.drivers = [
-        # pkgs.epson-escpr
+        pkgs.epson-escpr
       ];
 
       services.pcscd.enable = true; # what the heck is a smartcard
