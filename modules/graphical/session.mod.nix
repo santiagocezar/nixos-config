@@ -30,7 +30,7 @@
       environment.systemPackages = with pkgs; [
         gnupg
         # gnome.seahorse
-        kdePackages.ktexteditor # This adds PolKit support to kate? [^1]
+        # kdePackages.ktexteditor # This adds PolKit support to kate? [^1]
       ];
 
       programs.gnupg.agent = {

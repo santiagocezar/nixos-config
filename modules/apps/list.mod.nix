@@ -32,6 +32,7 @@
         thunderbird
         vlc
         syncthingtray
+        qbittorrent
 
         # Development
         flatpak-builder
