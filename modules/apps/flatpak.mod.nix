@@ -1,5 +1,7 @@
 {
-  _pc.nixos = { config, pkgs, lib, ... }: {
-    services.flatpak.enable = true;
-  };
+  _pc.nixos =
+    { ... }:
+    {
+      services.flatpak.enable = true;
+    };
 }

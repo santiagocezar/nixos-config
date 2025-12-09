@@ -1,10 +1,11 @@
-{ stdenv
-, fetchurl
-, lib
-, asar
-, makeWrapper
-, dpkg
-, electron
+{
+  stdenv,
+  fetchurl,
+  lib,
+  asar,
+  makeWrapper,
+  dpkg,
+  electron,
 }:
 
 stdenv.mkDerivation (finalAttrs: {
@@ -12,11 +13,15 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "staruml";
 
   src = fetchurl {
-      url = "https://files.staruml.io/releases-v6/StarUML_${finalAttrs.version}_amd64.deb";
-      sha256 = "sha256-AtWzGEegKUDeNLhklm74JNQQqBzdOE4MUYBFp9ubd2A=";
-    };
+    url = "https://files.staruml.io/releases-v6/StarUML_${finalAttrs.version}_amd64.deb";
+    sha256 = "sha256-AtWzGEegKUDeNLhklm74JNQQqBzdOE4MUYBFp9ubd2A=";
+  };
 
-  nativeBuildInputs = [ asar makeWrapper dpkg ];
+  nativeBuildInputs = [
+    asar
+    makeWrapper
+    dpkg
+  ];
 
   unpackPhase = ''
     mkdir pkg

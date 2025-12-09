@@ -1,7 +1,7 @@
 let
   sources = import ./lon.nix;
-  pkgs = import sources.nixpkgs {};
+  pkgs = import sources.nixpkgs { };
 in
-  (import ./modules) {
-    inherit pkgs sources;
-  }
+(import ./modules) {
+  inherit pkgs sources;
+}

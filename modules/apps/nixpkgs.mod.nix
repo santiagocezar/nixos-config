@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   _all.nixos = {
     # Allow unfree packages
     nixpkgs.config.allowUnfree = true;
@@ -15,7 +16,7 @@
         # };
         # Add SDL2_gfx to the uh, sandbox? used by `steam-run`
         intel-vaapi-driver = prev.intel-vaapi-driver.override { enableHybridCodec = true; };
-        staruml = final.callPackage ./staruml.nix {};
+        staruml = final.callPackage ./staruml.nix { };
       })
     ];
   };

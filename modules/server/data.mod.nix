@@ -1,14 +1,16 @@
 {
-  _srv.nixos = { config, pkgs, ... }: {
-    users.groups = {
-      media.members = [
-        "jellyfin"
-        "aria2"
+  _srv.nixos =
+    { config, pkgs, ... }:
+    {
+      users.groups = {
+        media.members = [
+          "jellyfin"
+          "aria2"
+        ];
+      };
+      systemd.tmpfiles.rules = [
+        "d /var/lib/media      0775 jellyfin media"
+        "d /var/lib/downloads  0775 root     media"
       ];
     };
-    systemd.tmpfiles.rules = [
-      "d /var/lib/media      0775 jellyfin media"
-      "d /var/lib/downloads  0775 root     media"
-    ];
-  };
 }
