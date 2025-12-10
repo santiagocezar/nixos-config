@@ -22,6 +22,16 @@
       "url": "https://github.com/nix-community/lanzaboote/archive/v0.4.3.tar.gz",
       "hash": "sha256-If6vQ+KvtKs3ARBO9G3l+4wFSCYtRBrwX1z+I+B61wQ="
     },
+    "nix-index-database": {
+      "type": "GitHub",
+      "fetchType": "tarball",
+      "owner": "nix-community",
+      "repo": "nix-index-database",
+      "branch": "main",
+      "revision": "82befcf7dc77c909b0f2a09f5da910ec95c5b78f",
+      "url": "https://github.com/nix-community/nix-index-database/archive/82befcf7dc77c909b0f2a09f5da910ec95c5b78f.tar.gz",
+      "hash": "sha256-d3NBA9zEtBu2JFMnTBqWj7Tmi7R5OikoU2ycrdhQEws="
+    },
     "nixpkgs": {
       "type": "GitHub",
       "fetchType": "tarball",

@@ -1,8 +1,15 @@
-{ ... }:
+{ sources, ... }:
 {
   _all.nixos =
+    let
+      nix-index-database = import "${sources.nix-index-database}/nixos-module.nix";
+    in
     { pkgs, ... }:
     {
+      imports = [
+        nix-index-database
+      ];
+      programs.nix-index-database.comma.enable = true;
       environment.systemPackages = with pkgs; [
         cachix
         file
@@ -20,7 +27,6 @@
         sops
         unrar
         usbutils
-        comma
       ];
     };
   _pc.nixos =
