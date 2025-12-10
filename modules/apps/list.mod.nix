@@ -20,6 +20,7 @@
         sops
         unrar
         usbutils
+        comma
       ];
     };
   _pc.nixos =
