@@ -7,9 +7,9 @@
       "owner": "nix-community",
       "repo": "home-manager",
       "branch": "master",
-      "revision": "519828bf1c97f8bc2ed2d3b79214067047d3c67d",
-      "url": "https://github.com/nix-community/home-manager/archive/519828bf1c97f8bc2ed2d3b79214067047d3c67d.tar.gz",
-      "hash": "sha256-cRPB2zESVMjIGxJ49qj4t4qnT0ae44E+fS/mkfOS/BY="
+      "revision": "13cc1efd78b943b98c08d74c9060a5b59bf86921",
+      "url": "https://github.com/nix-community/home-manager/archive/13cc1efd78b943b98c08d74c9060a5b59bf86921.tar.gz",
+      "hash": "sha256-HuWQp8fM25fyWflbuunQkQI62Hg0ecJxWD52FAgmxqY="
     },
     "lanzaboote": {
       "type": "GitHub",
@@ -28,9 +28,9 @@
       "owner": "NixOS",
       "repo": "nixpkgs",
       "branch": "nixos-unstable",
-      "revision": "418468ac9527e799809c900eda37cbff999199b6",
-      "url": "https://github.com/NixOS/nixpkgs/archive/418468ac9527e799809c900eda37cbff999199b6.tar.gz",
-      "hash": "sha256-7WUCZfmqLAssbDqwg9cUDAXrSoXN79eEEq17qhTNM/Y="
+      "revision": "addf7cf5f383a3101ecfba091b98d0a1263dc9b8",
+      "url": "https://github.com/NixOS/nixpkgs/archive/addf7cf5f383a3101ecfba091b98d0a1263dc9b8.tar.gz",
+      "hash": "sha256-hM20uyap1a0M9d344I692r+ik4gTMyj60cQWO+hAYP8="
     },
     "sops-nix": {
       "type": "GitHub",
